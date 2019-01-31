@@ -9,7 +9,7 @@ export class Home extends React.Component<IProps> {
     render() {
         return (
             <div>
-                <p>Home</p>
+                <p>Home..</p>
             </div>
         );
     }
