@@ -1,35 +1,28 @@
-import React from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
-import Home from './Home';
-import Lesson1 from './lesson-1/Lesson1';
-import Lesson2 from './lesson-2/Lesson2';
+import React, { Component } from 'react';
+import logo from './logo.svg';
 import './App.css';
 
-interface IProps {
-
-}
-
-export class App extends React.Component<IProps> {
-    render() {
-        return (
-            <Router>
-                <div>
-                    <nav>
-                        <ul>
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to="/lesson-1">Lesson 1 - simple counter</Link></li>
-                            <li><Link to="/lesson-2">Lesson 2</Link></li>
-                        </ul>
-                    </nav>
-                    <section>
-                        <Route exact path="/" component={Home}/>
-                        <Route path="/lesson-1" component={Lesson1}/>
-                        <Route path="/lesson-2" component={Lesson2}/>
-                    </section>
-                </div>
-            </Router>
-        )
-    }
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            Edit <code>src/App.tsx</code> and save to reload.
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+        </header>
+      </div>
+    );
+  }
 }
 
 export default App;
