@@ -12,27 +12,6 @@ import Home from './Home';
 import Lesson1 from './lesson-1/Lesson1';
 import Lesson2 from './lesson-2/Lesson2';
 
-
-const theme = createMuiTheme({
-    typography: {
-        useNextVariants: true,
-    },
-    palette: {
-        primary: {
-            light: '#757ce8',
-            main: '#3f50b5',
-            dark: '#002884',
-            contrastText: '#fff',
-        },
-        secondary: {
-            light: '#ff7961',
-            main: '#f44336',
-            dark: '#ba000d',
-            contrastText: '#000',
-        },
-    },
-});
-
 class App extends Component {
     state = {
         selectedIndex: 0,

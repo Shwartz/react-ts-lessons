@@ -10,8 +10,7 @@ export class Lesson1 extends React.Component<IProps> {
     render() {
         return (
             <div>
-                <p className={styles.test}>hjgkjhg jhg kjhg kjhg </p>
-                <p className={styles.myTest}>Lesson 1</p>
+                <h1>Lesson 1 - Simple counter</h1>
             </div>
         );
     }

@@ -9,7 +9,7 @@ export class Lesson2 extends React.Component<IProps> {
     render() {
         return (
             <div>
-                <p>Lesson 2</p>
+                <h1>Lesson 2</h1>
             </div>
         );
     }
