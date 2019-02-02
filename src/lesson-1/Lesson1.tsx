@@ -16,10 +16,12 @@ const appCounter = counter({
 export class Lesson1 extends React.Component<IProps> {
     state: IScope;
 
-    constructor(props:IProps) {
+    constructor(props: IProps) {
         super(props);
         this.state = appCounter.get();
-        appCounter.update((scope:IScope) => {this.setState(scope)})
+        appCounter.update((scope: IScope) => {
+            this.setState(scope)
+        })
     }
 
     render() {
@@ -29,13 +31,26 @@ export class Lesson1 extends React.Component<IProps> {
             <div>
                 <h1>Lesson 1 - Simple counter</h1>
 
+                <h3>Description</h3>
+                <p>Lorem ipsum ...</p>
+
+                <h3>Example:</h3>
+                <hr/>
                 <p>Updated value: {updateValue}</p>
                 <InputWidget
-                    add={()=> {appCounter.add()}}
-                    remove={()=> {appCounter.remove()}}
+                    add={() => {
+                        appCounter.add()
+                    }}
+                    remove={() => {
+                        appCounter.remove()
+                    }}
                     inputValue={inputValue}
-                    change={(val)=> {appCounter.inputChange(val)}}
+                    change={(val) => {
+                        appCounter.inputChange(val)
+                    }}
                 />
+                <hr/>
+                <h3>Code samples:</h3>
             </div>
         );
     }
