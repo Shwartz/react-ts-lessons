@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import Home from './Home';
+import Lesson1 from './lesson-1/Lesson1';
+import Lesson2 from './lesson-2/Lesson2';
 
-import './App.css';
+import styles from './App.module.scss';
 
 class App extends Component {
   render() {
     return (
         <Router>
-            <div className="App">
+            <div className={styles["App-header"]}>
                 <nav>
                     <ul>
                         <li><Link to="/">Home</Link></li>
