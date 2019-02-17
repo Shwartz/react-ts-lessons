@@ -38,16 +38,10 @@ export class Lesson1 extends React.Component<IProps> {
                 <hr/>
                 <p>Updated value: {updateValue}</p>
                 <InputWidget
-                    add={() => {
-                        appCounter.add()
-                    }}
-                    remove={() => {
-                        appCounter.remove()
-                    }}
+                    add={appCounter.add}
+                    remove={appCounter.remove}
                     inputValue={inputValue}
-                    change={(val) => {
-                        appCounter.inputChange(val)
-                    }}
+                    change={appCounter.inputChange}
                 />
                 <hr/>
                 <h3>Code samples:</h3>

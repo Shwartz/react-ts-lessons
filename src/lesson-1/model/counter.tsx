@@ -14,41 +14,41 @@ class Counter {
         this.scope = initialScope;
     }
 
-    add() {
+    add = () => {
         const {inputValue, updateValue} = this.scope;
         const result = inputValue + updateValue;
         this.set({inputValue, updateValue: result});
-    }
+    };
 
-    remove() {
+    remove = () => {
         const {inputValue, updateValue} = this.scope;
         const result = updateValue - inputValue;
         this.set({inputValue, updateValue: result});
-    }
+    };
 
-    inputChange(val: string) {
+    inputChange = (val: string) => {
         const {updateValue} = this.scope;
 
         this.set({inputValue: +val, updateValue});
-    }
+    };
 
-    set(scope:IScope) {
+    set = (scope:IScope) => {
         this.scope = scope;
         this.handlers.forEach((handler) => {
             handler(scope);
         })
-    }
+    };
 
-    get() {
+    get = () => {
         return this.scope;
-    }
+    };
 
-    update(handler: Ifn<void>) {
+    update = (handler: Ifn<void>) => {
         this.handlers = [...this.handlers, handler];
         return {}
-    }
+    };
 
-    clear() {
+    clear = () => {
         this.handlers = [];
     }
 }

@@ -11,10 +11,13 @@ interface IProps {
 export const InputWidget = ({change, add, remove, inputValue}: IProps) => {
     return (
         <React.Fragment>
-            <input type="number" value={inputValue} onChange={({currentTarget}) => {change(currentTarget.value)}}/>
+            <input
+                type="number"
+                value={inputValue}
+                onChange={({currentTarget}) => {change(currentTarget.value)}}/>
             <div>
-                <button onClick={() => {add()}}>Add {inputValue}</button>
-                <button onClick={() => {remove()}}>Remove {inputValue}</button>
+                <button onClick={add}>Add {inputValue}</button>
+                <button onClick={remove}>Remove {inputValue}</button>
             </div>
         </React.Fragment>
     )
