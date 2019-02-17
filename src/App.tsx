@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
@@ -26,38 +26,38 @@ class App extends Component {
             <Router>
                 <div className={styles.App}>
                     <CssBaseline />
-                    <Grid container spacing={16}>
-                        <Grid item xs={4}>
+                    <Grid container={true} spacing={16}>
+                        <Grid item={true} xs={4}>
                             <List component="nav">
                                 <Link to="/">
                                     <ListItem
-                                        button
+                                        button={true}
                                         selected={this.state.selectedIndex === 1}
-                                        onClick={ev => this.handleListItemClick(ev, 1)}>
+                                        onClick={(ev) => this.handleListItemClick(ev, 1)}>
                                         Home
                                     </ListItem>
                                 </Link>
                                 <Link to="/lesson1">
                                     <ListItem
-                                        button
+                                        button={true}
                                         selected={this.state.selectedIndex === 2}
-                                        onClick={ev => this.handleListItemClick(ev, 2)}>
+                                        onClick={(ev) => this.handleListItemClick(ev, 2)}>
                                         Lesson 1 - Simple counter
                                     </ListItem>
                                 </Link>
                                 <Link to="/lesson-2">
                                     <ListItem
-                                        button
+                                        button={true}
                                         selected={this.state.selectedIndex === 3}
-                                        onClick={ev => this.handleListItemClick(ev, 3)}>
+                                        onClick={(ev) => this.handleListItemClick(ev, 3)}>
                                         Lesson 2
                                     </ListItem>
                                 </Link>
                             </List>
                         </Grid>
-                        <Grid item xs={8}>
+                        <Grid item={true} xs={8}>
                             <section>
-                                <Route exact path="/" component={Home}/>
+                                <Route exact={true} path="/" component={Home}/>
                                 <Route path="/lesson1" component={Lesson1}/>
                                 <Route path="/lesson-2" component={Lesson2}/>
                             </section>

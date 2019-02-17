@@ -20,8 +20,8 @@ export class Lesson1 extends React.Component<IProps> {
         super(props);
         this.state = appCounter.get();
         appCounter.update((scope: IScope) => {
-            this.setState(scope)
-        })
+            this.setState(scope);
+        });
     }
 
     render() {

@@ -6,10 +6,10 @@ export interface IScope {
 }
 
 class Counter {
-    handlers: Ifn<void>[];
-    scope:IScope;
+    handlers: Array<Ifn<void>>;
+    scope: IScope;
 
-    constructor(initialScope:IScope) {
+    constructor(initialScope: IScope) {
         this.handlers = [];
         this.scope = initialScope;
     }
@@ -32,11 +32,11 @@ class Counter {
         this.set({inputValue: +val, updateValue});
     };
 
-    set = (scope:IScope) => {
+    set = (scope: IScope) => {
         this.scope = scope;
         this.handlers.forEach((handler) => {
             handler(scope);
-        })
+        });
     };
 
     get = () => {
@@ -45,7 +45,7 @@ class Counter {
 
     update = (handler: Ifn<void>) => {
         this.handlers = [...this.handlers, handler];
-        return {}
+        return {};
     };
 
     clear = () => {
@@ -53,4 +53,4 @@ class Counter {
     }
 }
 
-export const counter = (initialScope:IScope) => new Counter(initialScope);
+export const counter = (initialScope: IScope) => new Counter(initialScope);
