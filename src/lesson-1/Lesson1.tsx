@@ -5,7 +5,10 @@ import {InputWidget} from './widgets/InputWidget';
 import styles from './Lesson1.module.scss';
 
 interface IProps {
-
+    history: object;
+    location: object;
+    match: object;
+    staticContext: undefined;
 }
 
 const appCounter = counter({
@@ -13,7 +16,7 @@ const appCounter = counter({
     updateValue: 5
 });
 
-export class Lesson1 extends React.Component<IProps> {
+export class Lesson1 extends React.Component {
     state: IScope;
 
     constructor(props: IProps) {
@@ -28,7 +31,7 @@ export class Lesson1 extends React.Component<IProps> {
         const {inputValue, updateValue} = this.state;
 
         return (
-            <div>
+            <div className={styles.Lesson1}>
                 <h1>Lesson 1 - Simple counter</h1>
 
                 <h3>Description</h3>

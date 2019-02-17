@@ -1,11 +1,6 @@
+import {CssBaseline, Grid, List, ListItem} from '@material-ui/core';
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
-
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import { createMuiTheme } from '@material-ui/core/styles';
 import styles from './App.module.scss';
 
 import Home from './Home';
@@ -33,7 +28,8 @@ class App extends Component {
                                     <ListItem
                                         button={true}
                                         selected={this.state.selectedIndex === 1}
-                                        onClick={(ev) => this.handleListItemClick(ev, 1)}>
+                                        onClick={(ev) => this.handleListItemClick(ev, 1)}
+                                    >
                                         Home
                                     </ListItem>
                                 </Link>
@@ -41,7 +37,8 @@ class App extends Component {
                                     <ListItem
                                         button={true}
                                         selected={this.state.selectedIndex === 2}
-                                        onClick={(ev) => this.handleListItemClick(ev, 2)}>
+                                        onClick={(ev) => this.handleListItemClick(ev, 2)}
+                                    >
                                         Lesson 1 - Simple counter
                                     </ListItem>
                                 </Link>
@@ -49,7 +46,8 @@ class App extends Component {
                                     <ListItem
                                         button={true}
                                         selected={this.state.selectedIndex === 3}
-                                        onClick={(ev) => this.handleListItemClick(ev, 3)}>
+                                        onClick={(ev) => this.handleListItemClick(ev, 3)}
+                                    >
                                         Lesson 2
                                     </ListItem>
                                 </Link>

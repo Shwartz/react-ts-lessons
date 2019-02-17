@@ -1,10 +1,6 @@
 import React from 'react';
 
-interface IProps {
-
-}
-
-export class Lesson2 extends React.Component<IProps> {
+export class Lesson2 extends React.Component {
 
     render() {
         return (
