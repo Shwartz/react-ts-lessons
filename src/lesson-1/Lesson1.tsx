@@ -35,7 +35,6 @@ export class Lesson1 extends React.Component {
                 <h1>Lesson 1 - Simple counter</h1>
 
                 <h3>Description</h3>
-                <p>Lorem ipsum ...</p>
 
                 <h3>Example:</h3>
                 <hr/>
