@@ -10,30 +10,39 @@ interface IProps {
     staticContext: undefined;
 }
 
+interface IState {
+    inputValue: number;
+    updateValue: number;
+}
+
 export class Lesson1 extends React.Component {
 
     constructor(props: IProps) {
         super(props);
     }
 
-    state = {
+    state: IState = {
         inputValue: 5,
         updateValue: 0
     };
 
-    add = () => {
-        const {inputValue, updateValue} = this.state;
-        const result = (+inputValue) + (+updateValue);
-        this.setState({inputValue, updateValue: result});
+    add() {
+        this.setState((currentState: IState) => {
+            const {inputValue, updateValue} = currentState;
+            const result = inputValue + updateValue;
+            return {inputValue, updateValue: result};
+        });
     };
 
-    remove = () => {
-        const {inputValue, updateValue} = this.state;
-        const result = (+updateValue) - (+inputValue);
-        this.setState({inputValue, updateValue: result});
+    remove() {
+        this.setState((currentState: IState) => {
+            const {inputValue, updateValue} = currentState;
+            const result = updateValue - inputValue;
+            return {inputValue, updateValue: result};
+        });
     };
 
-    updateValue = (value: number) => {
+    updateValue(value: number) {
         this.setState({
             inputValue: value
         });
@@ -52,8 +61,8 @@ export class Lesson1 extends React.Component {
                 <hr/>
                 <p>Updated value: {updateValue}</p>
                 <InputWidget
-                    add={this.add}
-                    remove={this.remove}
+                    add={() => this.add()}
+                    remove={() => this.remove()}
                     inputValue={inputValue}
                     change={(val) => this.updateValue(val)}
                 />
