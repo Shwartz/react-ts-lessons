@@ -18,9 +18,9 @@ class App extends Component {
 
     render() {
         return (
-            <Router>
+            <Router basename={process.env.PUBLIC_URL}>
                 <div className={styles.App}>
-                    <CssBaseline />
+                    <CssBaseline/>
                     <Grid container={true} spacing={16}>
                         <Grid item={true} xs={4}>
                             <List component="nav">
