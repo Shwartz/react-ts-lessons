@@ -32,7 +32,7 @@ export class Lesson1 extends React.Component {
             const result = inputValue + updateValue;
             return {inputValue, updateValue: result};
         });
-    };
+    }
 
     remove() {
         this.setState((currentState: IState) => {
@@ -40,13 +40,13 @@ export class Lesson1 extends React.Component {
             const result = updateValue - inputValue;
             return {inputValue, updateValue: result};
         });
-    };
+    }
 
     updateValue(value: number) {
         this.setState({
             inputValue: value
         });
-    };
+    }
 
     render() {
         const {inputValue, updateValue} = this.state;
