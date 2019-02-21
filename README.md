@@ -1,6 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Clone project and run `yarn instally`
+Clone project and run `yarn install`
+
+Based on [React, Inline Functions and Performance](https://cdb.reacttraining.com/react-inline-functions-and-performance-bdff784f5578)
+
 
 ## Available Scripts
 
