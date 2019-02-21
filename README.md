@@ -4,6 +4,7 @@ Clone project and run `yarn install`
 
 Based on [React, Inline Functions and Performance](https://cdb.reacttraining.com/react-inline-functions-and-performance-bdff784f5578)
 
+[Live site with examples](https://shwartz.github.io/react-ts-lessons/)
 
 ## Available Scripts
 
