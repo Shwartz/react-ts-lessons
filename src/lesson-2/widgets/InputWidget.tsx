@@ -22,20 +22,26 @@ export const InputWidget = (
                 value={inputValue}
                 onChange={
                     ({currentTarget: {value}}) => {
-                    inputChange(value);
-                }}
+                        inputChange(value);
+                    }}
             />
             <div>
-                <button onClick={
-                    () => {
-                        leftButtonHandler()
+                <button
+                    onClick={
+                        () => {
+                            leftButtonHandler();
+                        }
                     }
-                }>Add {inputValue}</button>
-                <button onClick={
-                    () => {
-                        rightButtonHandler()
+                >Add {inputValue}
+                </button>
+                <button
+                    onClick={
+                        () => {
+                            rightButtonHandler();
+                        }
                     }
-                }>Remove {inputValue}</button>
+                >Remove {inputValue}
+                </button>
             </div>
         </React.Fragment>
     );

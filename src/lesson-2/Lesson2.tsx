@@ -54,7 +54,7 @@ export class Lesson2 extends React.Component {
 
                     inputValue={inputValue}
                     inputChange={(value: number) => {
-                        this.counter.inputChange(value)
+                        this.counter.inputChange(value);
                     }}
                 />
                 <hr/>

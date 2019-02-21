@@ -1,5 +1,4 @@
 import React from 'react';
-import {counter, IScope} from './model/counter';
 import {InputWidget} from './widgets/InputWidget';
 
 import styles from './Lesson1.module.scss';
@@ -11,21 +10,34 @@ interface IProps {
     staticContext: undefined;
 }
 
-const appCounter = counter({
-    inputValue: 5,
-    updateValue: 5
-});
-
 export class Lesson1 extends React.Component {
-    state: IScope;
 
     constructor(props: IProps) {
         super(props);
-        this.state = appCounter.get();
-        appCounter.update((scope: IScope) => {
-            this.setState(scope);
-        });
     }
+
+    state = {
+        inputValue: 5,
+        updateValue: 0
+    };
+
+    add = () => {
+        const {inputValue, updateValue} = this.state;
+        const result = (+inputValue) + (+updateValue);
+        this.setState({inputValue, updateValue: result});
+    };
+
+    remove = () => {
+        const {inputValue, updateValue} = this.state;
+        const result = (+updateValue) - (+inputValue);
+        this.setState({inputValue, updateValue: result});
+    };
+
+    updateValue = (value: number) => {
+        this.setState({
+            inputValue: value
+        });
+    };
 
     render() {
         const {inputValue, updateValue} = this.state;
@@ -40,10 +52,10 @@ export class Lesson1 extends React.Component {
                 <hr/>
                 <p>Updated value: {updateValue}</p>
                 <InputWidget
-                    add={appCounter.add}
-                    remove={appCounter.remove}
+                    add={this.add}
+                    remove={this.remove}
                     inputValue={inputValue}
-                    change={appCounter.inputChange}
+                    change={(val) => this.updateValue(val)}
                 />
                 <hr/>
                 <h3>Code samples:</h3>
