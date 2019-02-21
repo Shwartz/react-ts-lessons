@@ -18,6 +18,7 @@
         "no-unused-expression": [true, "allow-fast-null-checks"],
         "object-literal-sort-keys": false,
         "no-namespace": false,
+        "jsx-no-lambda": false,
         "member-ordering": [
             true,
             {

@@ -6,44 +6,43 @@ export interface IScope {
 }
 
 class Counter {
-    handlers: Array<Ifn<void>>;
+    handlers: Array<Ifn<void>> = [];
     scope: IScope;
 
     constructor(initialScope: IScope) {
-        this.handlers = [];
         this.scope = initialScope;
     }
 
-    add = () => {
+    add() {
         const {inputValue, updateValue} = this.scope;
         const result = inputValue + updateValue;
         this.set({inputValue, updateValue: result});
     };
 
-    remove = () => {
+    remove() {
         const {inputValue, updateValue} = this.scope;
         const result = updateValue - inputValue;
         this.set({inputValue, updateValue: result});
     };
 
-    inputChange = (val: string) => {
+    inputChange(val: number) {
         const {updateValue} = this.scope;
 
         this.set({inputValue: +val, updateValue});
     };
 
-    set = (scope: IScope) => {
+    set(scope: IScope) {
         this.scope = scope;
         this.handlers.forEach((handler) => {
             handler(scope);
         });
     };
 
-    get = () => {
+    get() {
         return this.scope;
     };
 
-    update = (handler: Ifn<void>) => {
+    update(handler: Ifn<void>) {
         this.handlers = [...this.handlers, handler];
         return {};
     };
