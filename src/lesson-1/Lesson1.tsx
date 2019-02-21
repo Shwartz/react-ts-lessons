@@ -29,7 +29,7 @@ export class Lesson1 extends React.Component {
     add() {
         this.setState((currentState: IState) => {
             const {inputValue, updateValue} = currentState;
-            const result = (+inputValue) + (+updateValue);
+            const result = inputValue + updateValue;
             return {inputValue, updateValue: result};
         });
     };
@@ -37,7 +37,7 @@ export class Lesson1 extends React.Component {
     remove() {
         this.setState((currentState: IState) => {
             const {inputValue, updateValue} = currentState;
-            const result = (+updateValue) - (+inputValue);
+            const result = updateValue - inputValue;
             return {inputValue, updateValue: result};
         });
     };
