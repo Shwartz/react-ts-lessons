@@ -1,12 +1,9 @@
-import Prism from 'prismjs';
+import * as Prism from 'prismjs';
 import React from 'react';
-import './prism.css';
+import '../../common/prism.css';
 
 export const Description = () => {
-    setTimeout(() => {
-        Prism.highlightAll();
-    }, 0);
-
+    Prism.highlightAll(true);
     return (
         <div>
             <a href="https://github.com/Shwartz/react-ts-lessons/tree/master/src/lesson-1">Source: /src/lesson-1</a>
