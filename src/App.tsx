@@ -2,6 +2,7 @@ import {CssBaseline, Grid, List, ListItem} from '@material-ui/core';
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import styles from './App.module.scss';
+import './common/prism.css';
 
 import Home from './Home';
 import Lesson1 from './lesson-1/Lesson1';
