@@ -14,7 +14,7 @@ export const InputWidget = ({change, add, remove, inputValue}: IProps) => {
             <input
                 type="number"
                 value={inputValue}
-                onChange={({currentTarget}) => {change(currentTarget.value); }}
+                onChange={({currentTarget}) => {change(+currentTarget.value); }}
             />
             <div>
                 <button onClick={add}>Add {inputValue}</button>
