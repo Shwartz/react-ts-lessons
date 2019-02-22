@@ -1,10 +1,10 @@
 import React from 'react';
-import {Ifn} from '../../lib/interfaces';
+import {IfnNoArg, IfnOneArg} from '../../lib/interfaces';
 
 interface IProps {
-    change: Ifn<void>;
-    add: Ifn<void>;
-    remove: Ifn<void>;
+    change: IfnOneArg<number, void>;
+    add: IfnNoArg<void>;
+    remove: IfnNoArg<void>;
     inputValue: number;
 }
 
@@ -14,7 +14,9 @@ export const InputWidget = ({change, add, remove, inputValue}: IProps) => {
             <input
                 type="number"
                 value={inputValue}
-                onChange={({currentTarget}) => {change(+currentTarget.value); }}
+                onChange={({currentTarget}) => {
+                    change(+currentTarget.value);
+                }}
             />
             <div>
                 <button onClick={add}>Add {inputValue}</button>
