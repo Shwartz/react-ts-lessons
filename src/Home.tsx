@@ -10,8 +10,8 @@ export class Home extends React.Component {
                     with functional programming pattern in mind</p>
 
                 <p>You can see the source code in Github:
-                    <a
-                        href="https://github.com/Shwartz/react-ts-lessons">https://github.com/Shwartz/react-ts-lessons
+                    <a href="https://github.com/Shwartz/react-ts-lessons">
+                        https://github.com/Shwartz/react-ts-lessons
                     </a>
                 </p>
 

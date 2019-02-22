@@ -1,4 +1,5 @@
 import React from 'react';
+import {Description} from './Description/Description';
 import {InputWidget} from './widgets/InputWidget';
 
 import styles from './Lesson1.module.scss';
@@ -50,7 +51,6 @@ export class Lesson1 extends React.Component {
 
     render() {
         const {inputValue, updateValue} = this.state;
-
         return (
             <div className={styles.lesson1}>
                 <h1>Lesson 1 - Simple counter</h1>
@@ -68,6 +68,7 @@ export class Lesson1 extends React.Component {
                 </div>
 
                 <h3>Description:</h3>
+                <Description/>
             </div>
         );
     }
