@@ -1,10 +1,19 @@
 import React from 'react';
 import {IfnNoArg, IfnOneArg} from '../../lib/interfaces';
 
-interface IProps {
+// This is example with predefined types.
+/*interface IProps {
     change: IfnOneArg<number, void>;
     add: IfnNoArg<void>;
     remove: IfnNoArg<void>;
+    inputValue: number;
+}*/
+
+// This is example with function definitions.
+interface IProps {
+    change: (value: number) => void;
+    add: () => void;
+    remove: () => void;
     inputValue: number;
 }
 
