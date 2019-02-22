@@ -3,7 +3,9 @@ import React from 'react';
 import './prism.css';
 
 export const Description = () => {
-    Prism.highlightAll();
+    setTimeout(() => {
+        Prism.highlightAll();
+    }, 0);
 
     return (
         <div>
