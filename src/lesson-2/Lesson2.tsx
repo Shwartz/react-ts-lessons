@@ -13,7 +13,7 @@ interface IProps {
 
 const initialState = {
     inputValue: 5,
-    updateValue: 5
+    updateValue: 0
 };
 
 export class Lesson2 extends React.Component {
