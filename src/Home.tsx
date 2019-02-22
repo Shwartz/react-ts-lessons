@@ -6,10 +6,20 @@ export class Home extends React.Component {
         return (
             <div>
                 <h1>Welcome to React Typescript tutorial</h1>
-                <p>Aim of this tutorial is to create step by step examples on how to build scalable one page application
+                <p>This tutorial aims to create a step by step examples on how to build a scalable one-page application
                     with functional programming pattern in mind</p>
 
-                <p>Each lesson is added under <b>/src/lesson-1/</b> folder. Each folder has specific task to solve</p>
+                <p>You can see the source code in Github:
+                    <a
+                        href="https://github.com/Shwartz/react-ts-lessons">https://github.com/Shwartz/react-ts-lessons
+                    </a>
+                </p>
+
+                <h4>Lesson 1</h4>
+                <p>Counter widget built based on ReactJS documentation</p>
+
+                <h4>Lesson 2</h4>
+                <p>The same Counter widget however we moving out logic into a model.</p>
             </div>
         );
     }

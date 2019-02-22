@@ -52,22 +52,22 @@ export class Lesson1 extends React.Component {
         const {inputValue, updateValue} = this.state;
 
         return (
-            <div className={styles.Lesson1}>
+            <div className={styles.lesson1}>
                 <h1>Lesson 1 - Simple counter</h1>
 
-                <h3>Description</h3>
+                <h3>Demo</h3>
 
-                <h3>Example:</h3>
-                <hr/>
-                <p>Updated value: {updateValue}</p>
-                <InputWidget
-                    add={() => this.add()}
-                    remove={() => this.remove()}
-                    inputValue={inputValue}
-                    change={(val) => this.updateValue(val)}
-                />
-                <hr/>
-                <h3>Code samples:</h3>
+                <div className={styles.codeDemo}>
+                    <p className={styles.text}>Total: {updateValue}</p>
+                    <InputWidget
+                        add={() => this.add()}
+                        remove={() => this.remove()}
+                        inputValue={inputValue}
+                        change={(val) => this.updateValue(val)}
+                    />
+                </div>
+
+                <h3>Description:</h3>
             </div>
         );
     }

@@ -2,6 +2,16 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 48px;
+  color: #444;
+
+  h1 {
+    padding-bottom: 12px;
+    border-bottom: 1px solid #444;
+  }
+
+  a {
+    color: #1565C0;
+  }
 
   @media(max-width: 800px) {
     padding: 0 8px;
