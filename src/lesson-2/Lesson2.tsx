@@ -35,30 +35,30 @@ export class Lesson2 extends React.Component {
             <div className={styles.Lesson2}>
                 <h1>Lesson 2</h1>
 
-                <h3>Description</h3>
+                <h3>Demo</h3>
 
-                <h3>Example:</h3>
-                <hr/>
-                <p>Updated value: {updateValue}</p>
-                <InputWidget
-                    leftButtonHandler={
-                        () => {
-                            this.counter.add();
+                <div className={styles.codeDemo}>
+                    <p className={styles.output}>Total: {updateValue}</p>
+                    <InputWidget
+                        leftButtonHandler={
+                            () => {
+                                this.counter.add();
+                            }
                         }
-                    }
-                    rightButtonHandler={
-                        () => {
-                            this.counter.remove();
+                        rightButtonHandler={
+                            () => {
+                                this.counter.remove();
+                            }
                         }
-                    }
 
-                    inputValue={inputValue}
-                    inputChange={(value: number) => {
-                        this.counter.inputChange(value);
-                    }}
-                />
-                <hr/>
-                <h3>Code samples:</h3>
+                        inputValue={inputValue}
+                        inputChange={(value: number) => {
+                            this.counter.inputChange(value);
+                        }}
+                    />
+                </div>
+
+                <h3>Description:</h3>
             </div>
         );
     }

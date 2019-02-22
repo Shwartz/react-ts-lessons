@@ -13,7 +13,7 @@ interface IProps {
 export const InputWidget = ({change, add, remove, inputValue}: IProps) => {
     return (
         <React.Fragment>
-            <div>
+            <div className={styles.buttons}>
                 <Button
                     variant="contained"
                     onClick={add}

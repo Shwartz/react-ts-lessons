@@ -58,7 +58,7 @@ export class Lesson1 extends React.Component {
                 <h3>Demo</h3>
 
                 <div className={styles.codeDemo}>
-                    <p className={styles.text}>Total: {updateValue}</p>
+                    <p className={styles.output}>Total: {updateValue}</p>
                     <InputWidget
                         add={() => this.add()}
                         remove={() => this.remove()}
