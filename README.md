@@ -1,10 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Clone project and run `yarn install`
+Clone the project and run `yarn install`
 
-Based on [React, Inline Functions and Performance](https://cdb.reacttraining.com/react-inline-functions-and-performance-bdff784f5578)
+Here is a [demo website with examples](https://shwartz.github.io/react-ts-lessons/)
 
-[Live site with examples](https://shwartz.github.io/react-ts-lessons/)
+Heavily based on [Article: React, Inline Functions and Performance](https://cdb.reacttraining.com/react-inline-functions-and-performance-bdff784f5578)
 
 ## Available Scripts
 

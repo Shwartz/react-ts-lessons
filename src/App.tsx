@@ -48,7 +48,7 @@ class App extends Component {
                                         selected={this.state.selectedIndex === 3}
                                         onClick={(ev) => this.handleListItemClick(ev, 3)}
                                     >
-                                        Lesson 2
+                                        Lesson 2 - Simple counter
                                     </ListItem>
                                 </Link>
                             </List>
