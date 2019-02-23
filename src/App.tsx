@@ -24,7 +24,7 @@ class App extends Component {
                 <div className={styles.App}>
                     <CssBaseline/>
                     <Grid container={true} spacing={16}>
-                        <Grid item={true} xs={4}>
+                        <Grid item={true} sm={4} xs={12}>
                             <List component="nav">
                                 <Link to="/">
                                     <ListItem
@@ -55,7 +55,7 @@ class App extends Component {
                                 </Link>
                             </List>
                         </Grid>
-                        <Grid item={true} xs={8}>
+                        <Grid item={true} sm={8} xs={12}>
                             <section>
                                 <Switch>
                                     <Route exact={true} path="/" component={Home}/>
