@@ -42,14 +42,16 @@ export class Lesson2 extends React.Component {
                     <InputWidget
                         leftButtonHandler={
                             () => {
-                                this.counter.add();
+                                this.counter.remove();
                             }
                         }
                         rightButtonHandler={
                             () => {
-                                this.counter.remove();
+                                this.counter.add();
                             }
                         }
+                        leftButtonLabel={`Remove`}
+                        rightButtonLabel={`Add`}
 
                         inputValue={inputValue}
                         inputChange={(value: number) => {

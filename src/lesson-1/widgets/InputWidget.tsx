@@ -16,15 +16,15 @@ export const InputWidget = ({change, add, remove, inputValue}: IProps) => {
             <div className={styles.buttons}>
                 <Button
                     variant="contained"
-                    onClick={add}
-                >
-                    Add {inputValue}
-                </Button>
-                <Button
-                    variant="contained"
                     onClick={remove}
                 >
                     Remove {inputValue}
+                </Button>
+                <Button
+                    variant="contained"
+                    onClick={add}
+                >
+                    Add {inputValue}
                 </Button>
             </div>
             <Input

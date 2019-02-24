@@ -6,7 +6,9 @@ import styles from './InputWidget.module.scss';
 interface IProps {
     inputChange: Ifn<void>;
     leftButtonHandler: Ifn<void>;
+    leftButtonLabel: string;
     rightButtonHandler: Ifn<void>;
+    rightButtonLabel: string;
     inputValue: number;
 }
 
@@ -14,7 +16,9 @@ export const InputWidget = (
     {
         inputChange,
         leftButtonHandler,
+        leftButtonLabel,
         rightButtonHandler,
+        rightButtonLabel,
         inputValue
     }: IProps) => {
     return (
@@ -27,7 +31,7 @@ export const InputWidget = (
                             leftButtonHandler();
                         }
                     }
-                >Add {inputValue}
+                >{leftButtonLabel} {inputValue}
                 </Button>
                 <Button
                     variant="contained"
@@ -36,7 +40,7 @@ export const InputWidget = (
                             rightButtonHandler();
                         }
                     }
-                >Remove {inputValue}
+                >{rightButtonLabel} {inputValue}
                 </Button>
             </div>
             <Input
