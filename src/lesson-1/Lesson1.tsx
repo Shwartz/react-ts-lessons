@@ -1,5 +1,5 @@
 import React from 'react';
-import {Description} from './Description/Description';
+import {Description} from './description/Description';
 import {InputWidget} from './widgets/InputWidget';
 
 import css from './Lesson1.module.scss';

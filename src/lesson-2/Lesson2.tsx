@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactMarkdown from 'react-markdown';
 import {counter, IScope} from './model/counter';
 import {InputWidget} from './widgets/InputWidget';
 
@@ -40,18 +41,32 @@ export class Lesson2 extends Component<IProps> {
                 <div className={styles.codeDemo}>
                     <p className={styles.output}>Total: {updateValue}</p>
                     <InputWidget
-                        leftButtonLabel="Remove"
-                        leftButtonHandler={() => this.counter.remove()}
-                        rightButtonLabel="Add"
-                        rightButtonHandler={() => this.counter.add()}
-                        inputChange={(value: number) => this.counter.inputChange(value)}
+                        leftButtonHandler={
+                            () => {
+                                this.counter.add();
+                            }
+                        }
+                        rightButtonHandler={
+                            () => {
+                                this.counter.remove();
+                            }
+                        }
+                        leftButtonLabel={`Remove`}
+                        rightButtonLabel={`Add`}
+                        inputChange={
+                            (value: number) => {
+                                this.counter.inputChange(value);
+                            }
+                        }
                         inputValue={inputValue}
                     />
                 </div>
 
                 <h3>Description:</h3>
+                <ReactMarkdown source={`Some text **with emphasis**.`}/>
             </div>
-        );
+        )
+            ;
     }
 }
 
