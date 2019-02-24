@@ -1,13 +1,13 @@
-import {Ifn} from '../../lib/interfaces';
-
 export interface IScope {
     inputValue: number;
     updateValue: number;
 }
 
+type TCallback = (scope: IScope) => void;
+
 class Counter {
-    handlers: Array<Ifn<void>> = [];
-    scope: IScope;
+    private handlers: TCallback[] = [];
+    private scope: IScope;
 
     constructor(initialScope: IScope) {
         this.scope = initialScope;
@@ -25,10 +25,9 @@ class Counter {
         this.set({inputValue, updateValue: result});
     }
 
-    inputChange(val: number) {
+    inputChange(value: number) {
         const {updateValue} = this.scope;
-
-        this.set({inputValue: +val, updateValue});
+        this.set({inputValue: value, updateValue});
     }
 
     set(scope: IScope) {
@@ -42,12 +41,11 @@ class Counter {
         return this.scope;
     }
 
-    update(handler: Ifn<void>) {
+    update(handler: TCallback) {
         this.handlers = [...this.handlers, handler];
-        return {};
     }
 
-    clear = () => {
+    clear() {
         this.handlers = [];
     }
 }

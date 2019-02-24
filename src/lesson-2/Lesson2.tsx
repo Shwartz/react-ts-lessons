@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {counter, IScope} from './model/counter';
 import {InputWidget} from './widgets/InputWidget';
 
@@ -11,12 +11,12 @@ interface IProps {
     staticContext: undefined;
 }
 
-const initialState = {
+const initialState: IScope = {
     inputValue: 5,
     updateValue: 0
 };
 
-export class Lesson2 extends React.Component {
+export class Lesson2 extends Component<IProps> {
     state: IScope;
     counter = counter(initialState);
 
@@ -40,23 +40,12 @@ export class Lesson2 extends React.Component {
                 <div className={styles.codeDemo}>
                     <p className={styles.output}>Total: {updateValue}</p>
                     <InputWidget
-                        leftButtonHandler={
-                            () => {
-                                this.counter.remove();
-                            }
-                        }
-                        rightButtonHandler={
-                            () => {
-                                this.counter.add();
-                            }
-                        }
-                        leftButtonLabel={`Remove`}
-                        rightButtonLabel={`Add`}
-
+                        leftButtonLabel="Remove"
+                        leftButtonHandler={() => this.counter.remove()}
+                        rightButtonLabel="Add"
+                        rightButtonHandler={() => this.counter.add()}
+                        inputChange={(value: number) => this.counter.inputChange(value)}
                         inputValue={inputValue}
-                        inputChange={(value: number) => {
-                            this.counter.inputChange(value);
-                        }}
                     />
                 </div>
 

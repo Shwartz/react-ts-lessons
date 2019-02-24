@@ -1,28 +1,27 @@
 import {Button, Input} from '@material-ui/core';
-import React from 'react';
-import {Ifn} from '../../lib/interfaces';
+import React, {Fragment} from 'react';
 import styles from './InputWidget.module.scss';
 
 interface IProps {
-    change: (a: number) => void;
-    add: Ifn<void>;
-    remove: Ifn<void>;
+    change: (value: number) => void;
+    add: () => void;
+    remove: () => void;
     inputValue: number;
 }
 
 export const InputWidget = ({change, add, remove, inputValue}: IProps) => {
     return (
-        <React.Fragment>
+        <Fragment>
             <div className={styles.buttons}>
                 <Button
                     variant="contained"
-                    onClick={remove}
+                    onClick={() => remove()}
                 >
                     Remove {inputValue}
                 </Button>
                 <Button
                     variant="contained"
-                    onClick={add}
+                    onClick={() => add()}
                 >
                     Add {inputValue}
                 </Button>
@@ -30,11 +29,9 @@ export const InputWidget = ({change, add, remove, inputValue}: IProps) => {
             <Input
                 type="number"
                 value={inputValue}
-                onChange={({currentTarget}) => {
-                    change(+currentTarget.value);
-                }}
+                onChange={({currentTarget}) => change(+currentTarget.value)}
                 className={styles.inputValue}
             />
-        </React.Fragment>
+        </Fragment>
     );
 };
