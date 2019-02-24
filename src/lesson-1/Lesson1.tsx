@@ -2,7 +2,7 @@ import React from 'react';
 import {Description} from './Description/Description';
 import {InputWidget} from './widgets/InputWidget';
 
-import styles from './Lesson1.module.scss';
+import css from './Lesson1.module.scss';
 
 interface IProps {
     history: object;
@@ -26,6 +26,7 @@ export class Lesson1 extends React.Component {
         inputValue: 5,
         updateValue: 0
     };
+    // https://reactjs.org/docs/state-and-lifecycle.html#state-updates-may-be-asynchronous
 
     add() {
         this.setState((currentState: IState) => {
@@ -52,13 +53,13 @@ export class Lesson1 extends React.Component {
     render() {
         const {inputValue, updateValue} = this.state;
         return (
-            <div className={styles.lesson1}>
+            <div className={css.lesson1}>
                 <h1>Lesson 1 - Simple counter</h1>
 
                 <h3>Demo</h3>
 
-                <div className={styles.codeDemo}>
-                    <p className={styles.output}>Total: {updateValue}</p>
+                <div className={css.codeDemo}>
+                    <p className={css.output}>Total: {updateValue}</p>
                     <InputWidget
                         add={() => this.add()}
                         remove={() => this.remove()}
