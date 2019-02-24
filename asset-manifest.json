@@ -1,13 +1,13 @@
 {
-  "main.css": "/react-ts-lessons/static/css/main.4c6816e9.chunk.css",
-  "main.js": "/react-ts-lessons/static/js/main.27af6b6c.chunk.js",
-  "main.js.map": "/react-ts-lessons/static/js/main.27af6b6c.chunk.js.map",
-  "static/js/1.bb38539b.chunk.js": "/react-ts-lessons/static/js/1.bb38539b.chunk.js",
-  "static/js/1.bb38539b.chunk.js.map": "/react-ts-lessons/static/js/1.bb38539b.chunk.js.map",
+  "main.css": "/react-ts-lessons/static/css/main.ebc59120.chunk.css",
+  "main.js": "/react-ts-lessons/static/js/main.80ebbdca.chunk.js",
+  "main.js.map": "/react-ts-lessons/static/js/main.80ebbdca.chunk.js.map",
+  "static/js/1.892729f1.chunk.js": "/react-ts-lessons/static/js/1.892729f1.chunk.js",
+  "static/js/1.892729f1.chunk.js.map": "/react-ts-lessons/static/js/1.892729f1.chunk.js.map",
   "runtime~main.js": "/react-ts-lessons/static/js/runtime~main.6d0e4d39.js",
   "runtime~main.js.map": "/react-ts-lessons/static/js/runtime~main.6d0e4d39.js.map",
-  "static/css/main.4c6816e9.chunk.css.map": "/react-ts-lessons/static/css/main.4c6816e9.chunk.css.map",
+  "static/css/main.ebc59120.chunk.css.map": "/react-ts-lessons/static/css/main.ebc59120.chunk.css.map",
   "index.html": "/react-ts-lessons/index.html",
-  "precache-manifest.897bb476d5b985384a378a2deedeae2f.js": "/react-ts-lessons/precache-manifest.897bb476d5b985384a378a2deedeae2f.js",
+  "precache-manifest.e1ff18e09e8ba1ab4156a972401f1674.js": "/react-ts-lessons/precache-manifest.e1ff18e09e8ba1ab4156a972401f1674.js",
   "service-worker.js": "/react-ts-lessons/service-worker.js"
 }
