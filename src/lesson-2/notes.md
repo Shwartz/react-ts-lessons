@@ -25,7 +25,6 @@ First we need Counter Object, where we collect `inputValue` and `updatedValue`
         inputValue: number;
         updateValue: number;
     }
-
 ```
 
 Later, we convert this to generic type.

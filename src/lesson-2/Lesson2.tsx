@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ReactMarkdown from 'react-markdown';
+import {Description} from './description/Description';
 import {counter, IScope} from './model/counter';
 import {InputWidget} from './widgets/InputWidget';
 
@@ -63,10 +63,9 @@ export class Lesson2 extends Component<IProps> {
                 </div>
 
                 <h3>Description:</h3>
-                <ReactMarkdown source={`Some text **with emphasis**.`}/>
+                <Description />
             </div>
-        )
-            ;
+        );
     }
 }
 
