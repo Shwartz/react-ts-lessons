@@ -1,21 +1,38 @@
 {
-    "extends": ["tslint:latest", "tslint-react"],
+    "extends": [
+        "tslint:latest",
+        "tslint-react"
+    ],
     "rules": {
         // override tslint-react rules here
         "jsx-wrap-multiline": true,
-        "jsx-quotes": ["error", "prefer-double"],
+        "jsx-quotes": [
+            "error",
+            "prefer-double"
+        ],
         "jsx-no-multiline-js": false,
-        "quotemark": [true,
+        "quotemark": [
+            true,
             "single",
             "jsx-double",
             "avoid-escape"
         ],
-        "no-implicit-dependencies": [true, "dev"],
+        "no-implicit-dependencies": [
+            true,
+            "dev"
+        ],
         "trailing-comma": false,
         "max-line-length": false,
         "member-access": false,
-        "semicolon": [true, "always", "ignore-bound-class-methods"],
-        "no-unused-expression": [true, "allow-fast-null-checks"],
+        "semicolon": [
+            true,
+            "always",
+            "ignore-bound-class-methods"
+        ],
+        "no-unused-expression": [
+            true,
+            "allow-fast-null-checks"
+        ],
         "object-literal-sort-keys": false,
         "no-namespace": false,
         "jsx-no-lambda": false,
@@ -27,8 +44,8 @@
                 ]
             }
         ],
-
         // keeping duplicate imports disabled due to false positives https://github.com/palantir/tslint/issues/3418
-        "no-duplicate-imports": false
+        "no-duplicate-imports": false,
+        "isolatedModules": false
     }
 }

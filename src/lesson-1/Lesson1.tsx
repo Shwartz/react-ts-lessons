@@ -63,7 +63,7 @@ export class Lesson1 extends React.Component {
                         add={() => this.add()}
                         remove={() => this.remove()}
                         inputValue={inputValue}
-                        change={(val) => this.updateValue(val)}
+                        change={(val: number) => this.updateValue(val)}
                     />
                 </div>
 
