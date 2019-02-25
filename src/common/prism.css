@@ -15,7 +15,7 @@ em > code {
     font-style: normal;
     padding: 2px 4px;
     font-size: 13px;
-    background: #f2f2f2;
+    background: #f9f9f9;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
@@ -26,9 +26,15 @@ li {
 
 blockquote {
     padding: 2px 16px;
-    background: #f2f2f2;
+    background: #eee;
     margin: 0;
     border-left: 4px solid #777;
+}
+
+section h2 {
+    margin-top: 1.6em;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #777;
 }
 
 code[class*="language-"],

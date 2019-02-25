@@ -1,5 +1,5 @@
 import React from 'react';
-import {MDConvert} from '../../lib/mdConvert';
+import {codeWrapper, MDConvert} from '../../lib/mdConvert';
 
 export const Description = () => {
     const part1 = `
@@ -20,7 +20,7 @@ We will use a Counter Widget with three methods such as Add, Remove, Input and s
 [https://github.com/Shwartz/react-ts-lessons/tree/master/src/lesson-1](https://github.com/Shwartz/react-ts-lessons/tree/master/src/lesson-1)
 
 
-### Methods in Class (React.Component)
+## Methods in Class (React.Component)
 
 > *\`React.Component\`* is a Javascript Class.
 
@@ -37,7 +37,7 @@ As per documentation:
 [ReactJS.org: State updates may be asynchronous](https://reactjs.org/docs/state-and-lifecycle.html#state-updates-may-be-asynchronous)
 
 
-\`\`\`javascript
+${codeWrapper(`
     ...
     add() {
         const {inputValue, updateValue} = this.state;
@@ -51,13 +51,13 @@ As per documentation:
     }
     ...
 
-\`\`\`
+`)}
 
 setState() API accepts Object and Function. The previous example use Object to update state. Nothing wrong with an example but it could fail in some situations (also described in the documentation).
 
 Since we can use Function example below would be a recommended way.
 
-\`\`\`javascript
+${codeWrapper(`
     ...
     add() {
         this.setState((currentState: IState) => {
@@ -67,9 +67,55 @@ Since we can use Function example below would be a recommended way.
         });
     }
     ...
+`)}
 
-\`\`\`
+Callback in *\`setState\`* according to API returns current State and Props. That means you will be safe in the asynchronous application.
 
+When using this approach, there is no need for *\`this\`* statement inside the callback.
+
+
+There is nothing wrong to use *\`setState\`* with a passing Object. Use this approach when you do not depend on a current State.
+
+${codeWrapper(`
+    ...
+    updateValue(value: number) {
+        this.setState({
+            inputValue: value
+        });
+    }
+    ...
+`)}
+
+## Render method
+
+>There are some rumours about performance issues when using arrow function inside the method you passing to a component. Since this is a sensitive subject, I suggest to read this article, and that should settle any doubts.
+> [React, Inline Functions, and Performance](https://cdb.reacttraining.com/react-inline-functions-and-performance-bdff784f5578)
+
+The recommended approach to defining all the State values at the top of the render() function
+
+${codeWrapper(`
+    ...
+    render() {
+        const {inputValue, updateValue} = this.state;
+    ...
+`)}
+
+Instead of passing methods to another React component use callback in your component. This way you won't need to pass *\`this\`* around or even worse to use an ugly *\`.bind(this)\`*.
+
+
+${codeWrapper(`
+    ...
+    add={() => {
+            this.add()
+        }}
+    ...
+`)}
+
+In our case, we do not use a callback. Therefore we could write arrow function without closure as a callback will be ignored.
+
+*\`() => this.add() \`*
+
+However, to make code consistent, we suggest using closers always like in the example above.
 `;
 
     return (

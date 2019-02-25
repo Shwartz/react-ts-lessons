@@ -16,3 +16,9 @@ interface Iprops {
 }
 
 export const MDConvert = ({children}: Iprops) => (<div dangerouslySetInnerHTML={{__html: convert(children)}}/>);
+
+export const codeWrapper = (content: string) => `
+\`\`\`javascript
+${content}
+\`\`\`
+`;
