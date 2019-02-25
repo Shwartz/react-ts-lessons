@@ -11,12 +11,12 @@ export const Description = () => {
 
 ### Description:
 
-We will use a Counter Widget with three methods such as Add, Remove, Input and show the Total amount after a calculation.
+We will use a Counter Widget with three methods such as Add, Remove, Input and show a Total amount after a calculation.
 
 ### What will you learn
 
  - How to use the *\`setState\`* method for *\`React.Component\`*
- - Use of Arrow functions (Lambdas) in *\`Render()\`* method and in props
+ - Use of Arrow functions in *\`Render()\`* method and in props
  - Use of Typescript types for Stateless Components, interface definition and props
 
 
