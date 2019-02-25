@@ -1,10 +1,11 @@
 import MarkdownIt from 'markdown-it';
-import * as Prism from 'prismjs';
+import {highlight, languages} from 'prismjs';
 import React from 'react';
 
+const wrap = (content: string) => `<pre class="language-javascript">${content}</pre>`;
 const md = new MarkdownIt({
     highlight(block: string) {
-        return Prism.highlight(block, Prism.languages.javascript);
+        return wrap(highlight(block, languages.javascript));
     }
 });
 
