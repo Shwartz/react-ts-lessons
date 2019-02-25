@@ -11,7 +11,7 @@ export const Description = () => {
 
 ### Description:
 
-We will use a simple Counter Widget with three methods such as Add, Remove, Input and show the Total amount after a calculation.
+We will use a Counter Widget with three methods such as Add, Remove, Input and show the Total amount after a calculation.
 
 ### What will you learn
 
@@ -24,23 +24,64 @@ We will use a simple Counter Widget with three methods such as Add, Remove, Inpu
 
 [https://github.com/Shwartz/react-ts-lessons/tree/master/src/lesson-1](https://github.com/Shwartz/react-ts-lessons/tree/master/src/lesson-1)
 
+
+### Methods in Class (React.Component)
+
+> *\`React.Component\`* is a Javascript Class.
+
+> *\`Stateless Component\`* is a function, with a return type of React element.
+
+It is crucial to define Prototype methods in Javascript class with *\`mehtodName(){}\`*, instead of *\`methodName = () => {}\`*.
+Second example will assign a default value by initialising a Class.
+
+Let's take a closer look at the setState method.
+
+As per documentation:
+> *\`this.props\`* and *\`this.state\`* may be updated asynchronously; you should not rely on their values for calculating the next state.
+
+[ReactJS.org: State updates may be asynchronous](https://reactjs.org/docs/state-and-lifecycle.html#state-updates-may-be-asynchronous)
+
+
 \`\`\`javascript
     ...
     add() {
         const {inputValue, updateValue} = this.state;
         const result = inputValue + updateValue;
-        this.setState({inputValue, updateValue: result});
+        this.setState(
+            {
+                inputValue,
+                updateValue: result
+            }
+        );
     }
     ...
 
 \`\`\`
 
-[ReactJS.org - using states correctly](https://reactjs.org/docs/state-and-lifecycle.html#using-state-correctly)
-    `;
+setState() API accepts Object and Function. The previous example use Object to update state. Nothing wrong with an example but it could fail in some situations (also described in the documentation).
+
+Since we can use Function example below would be a recommended way.
+
+\`\`\`javascript
+    ...
+    add() {
+        this.setState((currentState: IState) => {
+            const {inputValue, updateValue} = currentState;
+            const result = inputValue + updateValue;
+            return {inputValue, updateValue: result};
+        });
+    }
+    ...
+
+\`\`\`
+
+`;
 
     return (
         <div>
             <ReactMarkdown source={part1}/>
+
+            <hr/>
 
             <p>To produce a counter we use main Class Lesson1 with methods add(), remove() and update(). The counter
                 itself is a /widget/InputWidget.tsx.</p>
@@ -51,105 +92,9 @@ We will use a simple Counter Widget with three methods such as Add, Remove, Inpu
 
             <p>This is our Lesson1 Class:</p>
 
-            <pre>
-                <code className="language-javascript">
-{`
-export class Lesson1 extends React.Component {
-
-    constructor(props: IProps) {
-        super(props);
-    }
-
-    state: IState = {
-        inputValue: 5,
-        updateValue: 0
-    };
-
-    add() {
-        this.setState((currentState: IState) => {
-            const {inputValue, updateValue} = currentState;
-            const result = inputValue + updateValue;
-            return {inputValue, updateValue: result};
-        });
-    }
-
-    remove() {
-        this.setState((currentState: IState) => {
-            const {inputValue, updateValue} = currentState;
-            const result = updateValue - inputValue;
-            return {inputValue, updateValue: result};
-        });
-    }
-
-    updateValue(value: number) {
-        this.setState({
-            inputValue: value
-        });
-    }
-
-    render() {
-        const {inputValue, updateValue} = this.state;
-        return (
-            <div className={styles.lesson1}>
-                <h1>Lesson 1 - Simple counter</h1>
-
-                <h3>Demo</h3>
-
-                <div className={styles.codeDemo}>
-                    <p className={styles.text}>Total: {updateValue}</p>
-                    <InputWidget
-                        add={() => this.add()}
-                        remove={() => this.remove()}
-                        inputValue={inputValue}
-                        change={(val) => this.updateValue(val)}
-                    />
-                </div>
-
-                <h3>Description:</h3>
-                <Description/>
-            </div>
-        );
-    }
-}
-`}
-                </code>
-            </pre>
             <p>InputWidget.tsx is a function where we passing values and callbacks. The component itself doesn't
                 care about where it will be placed or how values will be calculated.</p>
-            <pre>
-                <code className="language-javascript">
-{`
-export const InputWidget = ({change, add, remove, inputValue}: IProps) => {
-    return (
-        <React.Fragment>
-            <div>
-                <Button
-                    variant="contained"
-                    onClick={add}
-                >
-                    Add {inputValue}
-                </Button>
-                <Button
-                    variant="contained"
-                    onClick={remove}
-                >
-                    Remove {inputValue}
-                </Button>
-            </div>
-            <Input
-                type="number"
-                value={inputValue}
-                onChange={({currentTarget}) => {
-                    change(+currentTarget.value);
-                }}
-                className={styles.inputValue}
-            />
-        </React.Fragment>
-    );
-};
-`}
-                </code>
-            </pre>
+
         </div>
     );
 };
