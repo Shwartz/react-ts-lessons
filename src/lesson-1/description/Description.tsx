@@ -1,14 +1,46 @@
 import * as Prism from 'prismjs';
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 
 export const Description = () => {
     setTimeout(() => {
         Prism.highlightAll();
     }, 0);
 
+    const part1 = `
+
+### Description:
+
+We will use a simple Counter Widget with three methods such as Add, Remove, Input and show the Total amount after a calculation.
+
+### What will you learn
+
+ - How to use the *\`setState\`* method for *\`React.Component\`*
+ - Use of Arrow functions (Lambdas) in *\`Render()\`* method and in props
+ - Use of Typescript types for Stateless Components, interface definition and props
+
+
+### Source
+
+[https://github.com/Shwartz/react-ts-lessons/tree/master/src/lesson-1](https://github.com/Shwartz/react-ts-lessons/tree/master/src/lesson-1)
+
+\`\`\`javascript
+    ...
+    add() {
+        const {inputValue, updateValue} = this.state;
+        const result = inputValue + updateValue;
+        this.setState({inputValue, updateValue: result});
+    }
+    ...
+
+\`\`\`
+
+[ReactJS.org - using states correctly](https://reactjs.org/docs/state-and-lifecycle.html#using-state-correctly)
+    `;
+
     return (
         <div>
-            <a href="https://github.com/Shwartz/react-ts-lessons/tree/master/src/lesson-1">Source: /src/lesson-1</a>
+            <ReactMarkdown source={part1}/>
 
             <p>To produce a counter we use main Class Lesson1 with methods add(), remove() and update(). The counter
                 itself is a /widget/InputWidget.tsx.</p>

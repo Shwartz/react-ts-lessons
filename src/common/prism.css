@@ -6,6 +6,20 @@ https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clik
  * @author ocodia
  */
 
+em > code {
+    color: red;
+    font-style: normal;
+    padding: 2px 4px;
+    font-size: 13px;
+    background: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+li {
+    margin-top: 2px;
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
 	color: #f8f8f2;

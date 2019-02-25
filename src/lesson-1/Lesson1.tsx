@@ -26,7 +26,6 @@ export class Lesson1 extends React.Component {
         inputValue: 5,
         updateValue: 0
     };
-    // https://reactjs.org/docs/state-and-lifecycle.html#state-updates-may-be-asynchronous
 
     add() {
         this.setState((currentState: IState) => {
@@ -56,7 +55,7 @@ export class Lesson1 extends React.Component {
             <div className={css.lesson1}>
                 <h1>Lesson 1 - Simple counter</h1>
 
-                <h3>Demo</h3>
+                <h3>Counter Widget demo</h3>
 
                 <div className={css.codeDemo}>
                     <p className={css.output}>Total: {updateValue}</p>
@@ -68,7 +67,6 @@ export class Lesson1 extends React.Component {
                     />
                 </div>
 
-                <h3>Description:</h3>
                 <Description/>
             </div>
         );
