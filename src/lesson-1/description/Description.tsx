@@ -1,12 +1,7 @@
-import * as Prism from 'prismjs';
 import React from 'react';
-import ReactMarkdown from 'react-markdown';
+import {MDConvert} from '../../lib/mdConvert';
 
 export const Description = () => {
-    setTimeout(() => {
-        Prism.highlightAll();
-    }, 0);
-
     const part1 = `
 
 ### Description:
@@ -79,7 +74,7 @@ Since we can use Function example below would be a recommended way.
 
     return (
         <div>
-            <ReactMarkdown source={part1}/>
+            <MDConvert>{part1}</MDConvert>
 
             <hr/>
 

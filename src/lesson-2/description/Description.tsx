@@ -1,13 +1,7 @@
-import * as Prism from 'prismjs';
 import React from 'react';
-import ReactMarkdown from 'react-markdown';
+import {MDConvert} from '../../lib/mdConvert';
 
-export const Description = () => {
-    setTimeout(() => {
-        Prism.highlightAll();
-    }, 0);
-
-    const part1 = `
+const part1 = `
 ### What you will learn
 
  - Create counter Class and move functionality outside Component
@@ -29,7 +23,7 @@ solution generic.
 First we need Counter Object, where we collect \`inputValue\` and \`updatedValue\`
 `;
 
-    const part2 = `
+const part2 = `
 \`\`\`javascript
 export class Lesson1 extends React.Component {
 
@@ -91,10 +85,11 @@ export class Lesson1 extends React.Component {
 \`\`\`
     `;
 
+export const Description = () => {
     return (
         <div>
-            <ReactMarkdown source={part1}/>
-            <ReactMarkdown source={part2}/>
+            <MDConvert>{part1}</MDConvert>
+            <MDConvert>{part2}</MDConvert>
         </div>
     );
 };
