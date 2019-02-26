@@ -55,7 +55,7 @@ ${codeWrapper(`
 
 setState() API accepts Object and Function. The previous example use Object to update state. Nothing wrong with an example but it could fail in some situations (also described in the documentation).
 
-Since we can use Function example below would be a recommended way.
+The recommended way by using Function.
 
 ${codeWrapper(`
     ...
@@ -111,31 +111,82 @@ ${codeWrapper(`
     ...
 `)}
 
-In our case, we do not use a callback. Therefore we could write arrow function without closure as a callback will be ignored.
+In our case, we do not use a callback. Therefore we could write arrow function without closure.
 
 *\`() => this.add() \`*
 
-However, to make code consistent, we suggest using closers always like in the example above.
+However, to make code consistent, I suggest using closers always like in the example above.
+
+For a case when callback returns an argument, it would make sense to show returning type.
+
+${codeWrapper(`
+    <InputWidget
+    ...
+        change={(val: number) => {
+            return this.updateValue(val)
+            }
+        }
+    />
+`)}
+
+## Stateless Components
+
+To use the full power of a Typescript add types to all props. By adding types, you will help to avoid extra type check and depends on your favourite Editor/IDE it might show all types in advance which is pretty awesome.
+
+In our widget, we have three callbacks and one static value, which is a number.
+
+${codeWrapper(`
+    interface IProps {
+        change: (value: number) => void;
+        add: () => void;
+        remove: () => void;
+        inputValue: number;
+    }
+`)}
+
+To use the full power of a Typescript add types to all props. By adding types, you will help to avoid extra type check and depends on your favourite Editor/IDE it might show all types in advance which is pretty awesome.
+
+In our widget, we have three callbacks and one static value, which is a number.
+
+${codeWrapper(`
+    <Button
+        ...
+        onClick={() => {
+            add();
+        }}
+    >
+`)}
+
+Let's explore onChange handler in the Input component
+
+${codeWrapper(`
+    <Input
+        ...
+        onChange={({currentTarget}) => {
+            return change(+currentTarget.value);
+        }}
+        ...
+    />
+`)}
+The *\`onChange\`* returns *\`React.ChangeEvent\`* as an argument. We are interested in value which we can get from *\`currentTarget.value\`*. The problem is that this property return type is a string. So, we need to convert it to a number which is done by adding *\`+\`* sign.
+
+## Improvements
+
+So, we have a cute tiny widget which can calculate some value. We can change the value what we want to add or remove from the total. What if we're going to reuse this widget inside in some other component?
+
+In that case, we would need to copy over all the methods.
+
+What if we want the same component but instead of add or remove to have other operations? So, we would need to change a label and add new methods.
+
+This approach could become messy as we would create similar but not the same Components and in some case, they would do one thing in other case something else.  How to write tests for this approach?
+
+Let's move to Lesson 2 and try to improve our Counter Widget.
 `;
 
     return (
-        <div>
+        <React.Fragment>
             <MDConvert>{part1}</MDConvert>
-
-            <hr/>
-
-            <p>To produce a counter we use main Class Lesson1 with methods add(), remove() and update(). The counter
-                itself is a /widget/InputWidget.tsx.</p>
-
-            <p>The main problem with this approach is that we can't easily reuse this widget. To reuse we need to copy
-                all the methods and a widget to the needed Class. Clearly, this would create a lot of code
-                duplication.</p>
-
-            <p>This is our Lesson1 Class:</p>
-
-            <p>InputWidget.tsx is a function where we passing values and callbacks. The component itself doesn't
-                care about where it will be placed or how values will be calculated.</p>
-
-        </div>
+            <p className="end">~ ~ ~ end ~ ~ ~</p>
+        </React.Fragment>
     );
 };

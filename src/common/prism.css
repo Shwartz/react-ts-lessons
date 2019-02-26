@@ -60,6 +60,12 @@ pre[class*="language-"] {
 	hyphens: none;
 }
 
+.end {
+    text-align: center;
+    color: #cecece;
+    margin: 48px 0;
+}
+
 /* Code blocks */
 pre[class*="language-"] {
 	padding: 1em;

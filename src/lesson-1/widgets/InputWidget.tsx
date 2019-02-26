@@ -15,13 +15,17 @@ export const InputWidget = ({change, add, remove, inputValue}: IProps) => {
             <div className={styles.buttons}>
                 <Button
                     variant="contained"
-                    onClick={() => remove()}
+                    onClick={() => {
+                        remove();
+                    }}
                 >
                     Remove {inputValue}
                 </Button>
                 <Button
                     variant="contained"
-                    onClick={() => add()}
+                    onClick={() => {
+                        add();
+                    }}
                 >
                     Add {inputValue}
                 </Button>
@@ -29,7 +33,9 @@ export const InputWidget = ({change, add, remove, inputValue}: IProps) => {
             <Input
                 type="number"
                 value={inputValue}
-                onChange={({currentTarget}) => change(+currentTarget.value)}
+                onChange={({currentTarget}) => {
+                    return change(+currentTarget.value);
+                }}
                 className={styles.inputValue}
             />
         </Fragment>
