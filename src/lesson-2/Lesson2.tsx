@@ -6,10 +6,6 @@ import {InputWidget} from './widgets/InputWidget';
 import styles from './Lesson2.module.scss';
 
 interface IProps {
-    history: object;
-    location: object;
-    match: object;
-    staticContext: undefined;
 }
 
 const initialState: IScope = {
@@ -17,7 +13,7 @@ const initialState: IScope = {
     updateValue: 0
 };
 
-export class Lesson2 extends Component<IProps> {
+class Lesson2 extends Component<IProps> {
     state: IScope;
     counter = counter(initialState);
 

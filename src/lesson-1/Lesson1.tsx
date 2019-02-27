@@ -1,14 +1,10 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Description} from './description/Description';
 import {InputWidget} from './widgets/InputWidget';
 
 import css from './Lesson1.module.scss';
 
 interface IProps {
-    history: object;
-    location: object;
-    match: object;
-    staticContext: undefined;
 }
 
 interface IState {
@@ -16,7 +12,7 @@ interface IState {
     updateValue: number;
 }
 
-export class Lesson1 extends React.Component {
+class Lesson1 extends Component {
 
     constructor(props: IProps) {
         super(props);
@@ -60,10 +56,16 @@ export class Lesson1 extends React.Component {
                 <div className={css.codeDemo}>
                     <p className={css.output}>Total: {updateValue}</p>
                     <InputWidget
-                        add={() => this.add()}
-                        remove={() => this.remove()}
+                        add={() => {
+                            this.add();
+                        }}
+                        remove={() => {
+                            this.remove();
+                        }}
                         inputValue={inputValue}
-                        change={(val: number) => this.updateValue(val)}
+                        change={(val: number) => {
+                            this.updateValue(val);
+                        }}
                     />
                 </div>
 

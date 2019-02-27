@@ -46,6 +46,7 @@
         ],
         // keeping duplicate imports disabled due to false positives https://github.com/palantir/tslint/issues/3418
         "no-duplicate-imports": false,
-        "isolatedModules": false
+        "isolatedModules": false,
+        "no-empty-interface": false
     }
 }

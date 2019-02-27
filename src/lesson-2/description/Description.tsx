@@ -64,6 +64,22 @@ class Counter {
 }    ...
 `)}
 
+Scope and handlers initialised for handling class state.
+
+In a *\`constructor\`*, we set *\`initialScope\`* which is mandatory.
+
+${codeWrapper(`
+...
+set(scope: IScope) {
+    this.scope = scope;
+    this.handlers.forEach((handler) => {
+        handler(scope);
+    });
+}
+...
+`)}
+
+
 --- WORK IN PROGRESS ---
 `;
 
