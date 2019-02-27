@@ -34,7 +34,7 @@ export const InputWidget = ({change, add, remove, inputValue}: IProps) => {
                 type="number"
                 value={inputValue}
                 onChange={({currentTarget}) => {
-                    return change(+currentTarget.value);
+                    change(+currentTarget.value);
                 }}
                 className={styles.inputValue}
             />

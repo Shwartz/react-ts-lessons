@@ -163,7 +163,7 @@ ${codeWrapper(`
     <Input
         ...
         onChange={({currentTarget}) => {
-            return change(+currentTarget.value);
+            change(+currentTarget.value);
         }}
         ...
     />
