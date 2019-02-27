@@ -34,9 +34,9 @@ export class Lesson2 extends Component<IProps> {
 
         return (
             <div className={styles.Lesson2}>
-                <h1>Lesson 2</h1>
+                <h1>Lesson 2 - Simple Counter</h1>
 
-                <h3>Demo</h3>
+                <h3>Counter Widget Demo</h3>
 
                 <div className={styles.codeDemo}>
                     <p className={styles.output}>Total: {updateValue}</p>
@@ -62,7 +62,6 @@ export class Lesson2 extends Component<IProps> {
                     />
                 </div>
 
-                <h3>Description:</h3>
                 <Description />
             </div>
         );

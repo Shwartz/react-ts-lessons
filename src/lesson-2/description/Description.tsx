@@ -2,7 +2,11 @@ import React from 'react';
 import {MDConvert} from '../../lib/mdConvert';
 
 const part1 = `
-### What you will learn
+### Description
+
+This is the same Counter Widget with the same methods. However, we are going to abstract Labels and Namings for the widget which would give as reusable Widget. We will introduce the Model which will keep methods for the widget separate to avoid copy/paste when re-using widget.
+
+### What will you learn
 
  - Create counter Class and move functionality outside Component
  - Handle communication between counter Class and Component
@@ -23,73 +27,11 @@ solution generic.
 First we need Counter Object, where we collect \`inputValue\` and \`updatedValue\`
 `;
 
-const part2 = `
-\`\`\`javascript
-export class Lesson1 extends React.Component {
-
-    constructor(props: IProps) {
-        super(props);
-    }
-
-    state: IState = {
-        inputValue: 5,
-        updateValue: 0
-    };
-
-    add() {
-        this.setState((currentState: IState) => {
-            const {inputValue, updateValue} = currentState;
-            const result = inputValue + updateValue;
-            return {inputValue, updateValue: result};
-        });
-    }
-
-    remove() {
-        this.setState((currentState: IState) => {
-            const {inputValue, updateValue} = currentState;
-            const result = updateValue - inputValue;
-            return {inputValue, updateValue: result};
-        });
-    }
-
-    updateValue(value: number) {
-        this.setState({
-            inputValue: value
-        });
-    }
-
-    render() {
-        const {inputValue, updateValue} = this.state;
-        return (
-            <div className={styles.lesson1}>
-                <h1>Lesson 1 - Simple counter</h1>
-
-                <h3>Demo</h3>
-
-                <div className={styles.codeDemo}>
-                    <p className={styles.text}>Total: {updateValue}</p>
-                    <InputWidget
-                        add={() => this.add()}
-                        remove={() => this.remove()}
-                        inputValue={inputValue}
-                        change={(val) => this.updateValue(val)}
-                    />
-                </div>
-
-                <h3>Description:</h3>
-                <Description/>
-            </div>
-        );
-    }
-}
-\`\`\`
-    `;
-
 export const Description = () => {
     return (
-        <div>
+        <React.Fragment>
             <MDConvert>{part1}</MDConvert>
-            <MDConvert>{part2}</MDConvert>
-        </div>
+            <p className="end">~ ~ ~ end ~ ~ ~</p>
+        </React.Fragment>
     );
 };
