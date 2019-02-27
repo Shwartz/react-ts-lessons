@@ -43,12 +43,12 @@ export class Lesson2 extends Component<IProps> {
                     <InputWidget
                         leftButtonHandler={
                             () => {
-                                this.counter.add();
+                                this.counter.remove();
                             }
                         }
                         rightButtonHandler={
                             () => {
-                                this.counter.remove();
+                                this.counter.add();
                             }
                         }
                         leftButtonLabel={`Remove`}

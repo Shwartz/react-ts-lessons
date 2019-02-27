@@ -1,5 +1,5 @@
 import React from 'react';
-import {MDConvert} from '../../lib/mdConvert';
+import {codeWrapper, MDConvert} from '../../lib/mdConvert';
 
 const part1 = `
 ### Description
@@ -11,20 +11,60 @@ This is the same Counter Widget with the same methods. However, we are going to 
  - Create counter Class and move functionality outside Component
  - Handle communication between counter Class and Component
 
+### Source
+
+[https://github.com/Shwartz/react-ts-lessons/tree/master/src/lesson-2](https://github.com/Shwartz/react-ts-lessons/tree/master/src/lesson-2)
+
 ## Counter Class
 
-Now we create counter class where we move, all counter functionality outside component.
+Let's move all functionality outside to the Counter component.
 
-> Here is advantage, if you decide to use React Native,
-> or different DOM manipulation library or framework. Counter Class will not change.
+> The main advantage is that functionality doesn't depend on ReactJS and is pure VanillaJS, which means we can reuse it in any other Library or Framework. Counter component won't change.
 
-This is only one small use case, but we try to show you idea, how to plan your application, to fit in to agile environment,
-where functionality changes is day to day requirement.
+A current example is just a small use case. However, imagine an enterprise level app in an agile dev environment where functionality changes are a day to day requirement.
 
-Ok, because we are not yet in generic types, we will start on counter particular use case, in next lesson, we will make this
-solution generic.
+In the next lesson, we will learn generic types and make this solution generic.
 
-First we need Counter Object, where we collect \`inputValue\` and \`updatedValue\`
+Let's create Counter Object where we can collect *\`inputValue\`* and *\`updateValue\`*.
+
+${codeWrapper(`
+export interface IScope {
+    inputValue: number;
+    updateValue: number;
+}
+    ...
+`)}
+
+We will convert this to generic type in the next Lesson.
+
+As per Counter component we need the following methods: *\`get()\`*, *\`set()\`*, *\`update()\`* and *\`clear()\`* in a case Counter is not needed anymore. We use *\`constructor()\`* to initialise class.
+
+${codeWrapper(`
+class Counter {
+  private handlers: TCallback[];
+  private scope: IScope;
+
+  constructor() {
+    }
+
+    set() {
+
+    }
+
+    get() {
+
+    }
+
+    update() {
+
+    }
+
+    clear() {
+    }
+}    ...
+`)}
+
+--- WORK IN PROGRESS ---
 `;
 
 export const Description = () => {

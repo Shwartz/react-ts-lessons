@@ -4,7 +4,7 @@ import {codeWrapper, MDConvert} from '../../lib/mdConvert';
 export const Description = () => {
     const part1 = `
 
-### Description:
+### Description
 
 We will use a Counter Widget with three methods such as Add, Remove, Input and show a Total amount after a calculation.
 
@@ -50,7 +50,6 @@ ${codeWrapper(`
         );
     }
     ...
-
 `)}
 
 setState() API accepts Object and Function. The previous example use Object to update state. Nothing wrong with an example but it could fail in some situations (also described in the documentation).
