@@ -37,24 +37,24 @@ class Lesson2 extends Component<IProps> {
                 <div className={styles.codeDemo}>
                     <p className={styles.output}>Total: {updateValue}</p>
                     <InputWidget
+                        leftButtonLabel={`Remove`}
                         leftButtonHandler={
                             () => {
                                 this.counter.remove();
                             }
                         }
+                        rightButtonLabel={`Add`}
                         rightButtonHandler={
                             () => {
                                 this.counter.add();
                             }
                         }
-                        leftButtonLabel={`Remove`}
-                        rightButtonLabel={`Add`}
+                        inputValue={inputValue}
                         inputChange={
                             (value: number) => {
                                 this.counter.inputChange(value);
                             }
                         }
-                        inputValue={inputValue}
                     />
                 </div>
 
