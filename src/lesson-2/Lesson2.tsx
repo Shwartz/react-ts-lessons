@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Description} from './description/Description';
-import {counter, IScope} from './model/counter';
+import {counter, Counter, IScope} from './model/counter';
 import {InputWidget} from './widgets/InputWidget';
 
 import styles from './Lesson2.module.scss';
@@ -14,11 +14,12 @@ const initialState: IScope = {
 };
 
 class Lesson2 extends Component<IProps> {
+    private counter: Counter;
     state: IScope;
-    counter = counter(initialState);
 
     constructor(props: IProps) {
         super(props);
+        this.counter = counter(initialState);
         this.state = this.counter.get();
         this.counter.update((scope: IScope) => {
             this.setState(scope);
@@ -58,7 +59,7 @@ class Lesson2 extends Component<IProps> {
                     />
                 </div>
 
-                <Description />
+                <Description/>
             </div>
         );
     }

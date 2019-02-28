@@ -5,7 +5,7 @@ export interface IScope {
 
 type TCallback = (scope: IScope) => void;
 
-class Counter {
+export class Counter {
     private handlers: TCallback[] = [];
     private scope: IScope;
 
