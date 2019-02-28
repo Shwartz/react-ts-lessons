@@ -23,7 +23,7 @@ class Lesson1 extends Component {
         updateValue: 0
     };
 
-    add() {
+    private add() {
         this.setState((currentState: IState) => {
             const {inputValue, updateValue} = currentState;
             const result = inputValue + updateValue;
@@ -31,7 +31,7 @@ class Lesson1 extends Component {
         });
     }
 
-    remove() {
+    private remove() {
         this.setState((currentState: IState) => {
             const {inputValue, updateValue} = currentState;
             const result = updateValue - inputValue;
@@ -39,7 +39,7 @@ class Lesson1 extends Component {
         });
     }
 
-    updateValue(value: number) {
+    private updateValue(value: number) {
         this.setState({
             inputValue: value
         });
