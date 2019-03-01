@@ -23,12 +23,12 @@ Let's move all functionality outside to the Counter component.
 
 A current example is just a small use case. However, imagine an enterprise level app in an agile dev environment where functionality changes are a day to day requirement.
 
-Let's create Counter Object where we can collect *\`inputValue\`* and *\`updateValue\`*.
+Let's create Counter Object where we can collect *\`inputValue\`* and *\`totalValue\`*.
 
 ${codeWrapper(`
 export interface IScope {
     inputValue: number;
-    updateValue: number;
+    totalValue: number;
 }
     ...
 `)}
@@ -120,20 +120,20 @@ Let's add methods for the counter. Each method will update ALL ENTIRE SCOPE!
 ${codeWrapper(`
 ...
 add() {
-    const {inputValue, updateValue} = this.scope;
-    const result = inputValue + updateValue;
-    this.set({inputValue, updateValue: result});
+    const {inputValue, totalValue} = this.scope;
+    const result = inputValue + totalValue;
+    this.set({inputValue, totalValue: result});
 }
 
 remove() {
-    const {inputValue, updateValue} = this.scope;
-    const result = updateValue - inputValue;
-    this.set({inputValue, updateValue: result});
+    const {inputValue, totalValue} = this.scope;
+    const result = totalValue - inputValue;
+    this.set({inputValue, totalValue: result});
 }
 
 inputChange(value: number) {
-    const {updateValue} = this.scope;
-    this.set({inputValue: value, updateValue});
+    const {totalValue} = this.scope;
+    this.set({inputValue: value, totalValue});
 }
 ...
 `)}
@@ -146,7 +146,7 @@ Here is a full class.
 ${codeWrapper(`
 export interface IScope {
     inputValue: number;
-    updateValue: number;
+    totalValue: number;
 }
 
 type TCallback = (scope: IScope) => void;
@@ -160,20 +160,20 @@ class Counter {
     }
 
     add() {
-        const {inputValue, updateValue} = this.scope;
-        const result = inputValue + updateValue;
-        this.set({inputValue, updateValue: result});
+        const {inputValue, totalValue} = this.scope;
+        const result = inputValue + totalValue;
+        this.set({inputValue, totalValue: result});
     }
 
     remove() {
-        const {inputValue, updateValue} = this.scope;
-        const result = updateValue - inputValue;
-        this.set({inputValue, updateValue: result});
+        const {inputValue, totalValue} = this.scope;
+        const result = totalValue - inputValue;
+        this.set({inputValue, totalValue: result});
     }
 
     inputChange(value: number) {
-        const {updateValue} = this.scope;
-        this.set({inputValue: value, updateValue});
+        const {totalValue} = this.scope;
+        this.set({inputValue: value, totalValue});
     }
 
     set(scope: IScope) {
@@ -213,7 +213,7 @@ ${codeWrapper(`
 ...
 const initialState: IScope = {
     inputValue: 5,
-    updateValue: 0
+    totalValue: 0
 };
 
 export class Lesson2 extends Component<IProps> {
@@ -237,7 +237,7 @@ ${codeWrapper(`
 
 ...
 render() {
-    const {inputValue, updateValue} = this.state;
+    const {inputValue, totalValue} = this.state;
 
     return (
         <div className={styles.Lesson2}>
@@ -246,7 +246,7 @@ render() {
             <h3>Counter Widget Demo</h3>
 
             <div className={styles.codeDemo}>
-                <p className={styles.output}>Total: {updateValue}</p>
+                <p className={styles.output}>Total: {totalValue}</p>
                 <InputWidget
                     leftButtonHandler={
                         () => {

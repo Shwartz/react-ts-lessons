@@ -1,12 +1,12 @@
 export interface IScope {
     inputValue: number;
-    updateValue: number;
+    totalValue: number;
 }
 
 type TCallback = (scope: IScope) => void;
 
 class Counter {
-    private handlers: TCallback[] = [];
+    private listener: TCallback[] = [];
     private scope: IScope;
 
     constructor(initialScope: IScope) {
@@ -14,25 +14,25 @@ class Counter {
     }
 
     add() {
-        const {inputValue, updateValue} = this.scope;
-        const result = inputValue + updateValue;
-        this.set({inputValue, updateValue: result});
+        const {inputValue, totalValue} = this.scope;
+        const result = inputValue + totalValue;
+        this.set({inputValue, totalValue: result});
     }
 
     remove() {
-        const {inputValue, updateValue} = this.scope;
-        const result = updateValue - inputValue;
-        this.set({inputValue, updateValue: result});
+        const {inputValue, totalValue} = this.scope;
+        const result = totalValue - inputValue;
+        this.set({inputValue, totalValue: result});
     }
 
     inputChange(value: number) {
-        const {updateValue} = this.scope;
-        this.set({inputValue: value, updateValue});
+        const {totalValue} = this.scope;
+        this.set({inputValue: value, totalValue});
     }
 
     set(scope: IScope) {
         this.scope = scope;
-        this.handlers.forEach((handler) => {
+        this.listener.forEach((handler) => {
             handler(scope);
         });
     }
@@ -42,11 +42,11 @@ class Counter {
     }
 
     update(handler: TCallback) {
-        this.handlers = [...this.handlers, handler];
+        this.listener = [...this.listener, handler];
     }
 
     clear() {
-        this.handlers = [];
+        this.listener = [];
     }
 }
 

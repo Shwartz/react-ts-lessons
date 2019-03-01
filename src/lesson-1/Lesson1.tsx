@@ -9,7 +9,7 @@ interface IProps {
 
 interface IState {
     inputValue: number;
-    updateValue: number;
+    totalValue: number;
 }
 
 class Lesson1 extends Component {
@@ -20,33 +20,33 @@ class Lesson1 extends Component {
 
     state: IState = {
         inputValue: 5,
-        updateValue: 0
+        totalValue: 0
     };
 
-    add() {
+    private add() {
         this.setState((currentState: IState) => {
-            const {inputValue, updateValue} = currentState;
-            const result = inputValue + updateValue;
-            return {inputValue, updateValue: result};
+            const {inputValue, totalValue} = currentState;
+            const result = inputValue + totalValue;
+            return {inputValue, totalValue: result};
         });
     }
 
-    remove() {
+    private remove() {
         this.setState((currentState: IState) => {
-            const {inputValue, updateValue} = currentState;
-            const result = updateValue - inputValue;
-            return {inputValue, updateValue: result};
+            const {inputValue, totalValue} = currentState;
+            const result = totalValue - inputValue;
+            return {inputValue, totalValue: result};
         });
     }
 
-    updateValue(value: number) {
+    private totalValue(value: number) {
         this.setState({
             inputValue: value
         });
     }
 
     render() {
-        const {inputValue, updateValue} = this.state;
+        const {inputValue, totalValue} = this.state;
         return (
             <div className={css.lesson1}>
                 <h1>Lesson 1 - Simple counter</h1>
@@ -54,7 +54,7 @@ class Lesson1 extends Component {
                 <h3>Counter Widget demo</h3>
 
                 <div className={css.codeDemo}>
-                    <p className={css.output}>Total: {updateValue}</p>
+                    <p className={css.output}>Total: {totalValue}</p>
                     <InputWidget
                         add={() => {
                             this.add();
@@ -64,7 +64,7 @@ class Lesson1 extends Component {
                         }}
                         inputValue={inputValue}
                         change={(val: number) => {
-                            this.updateValue(val);
+                            this.totalValue(val);
                         }}
                     />
                 </div>
