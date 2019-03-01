@@ -33,11 +33,15 @@ export interface IScope {
     ...
 `)}
 
-As per Counter component we need the following methods: *\`get()\`*, *\`set()\`*, *\`update()\`* Also, we add *\`clear()\`* method in a case Counter is not needed anymore. We use *\`constructor()\`* to initialise a class.
+> Observables are declarative - that is, you define a function for publishing values, but a function won't be executed until a consumer subscribes to it. The subscribed consumer then receives notifications until the function completes, or until they unsubscribe.
+
+To match basic observable, we need 4 methods *\`get()\`*, *\`set()\`*, *\`subscribe()\`*, *\`clear()\`* and of ourse *\`constructor()\`* to initialise class.
+
+> Here you can read more about mutation side effects: [https://benmccormick.org/2016/06/04/what-are-mutable-and-immutable-data-structures-2](https://benmccormick.org/2016/06/04/what-are-mutable-and-immutable-data-structures-2)
 
 ${codeWrapper(`
 class Counter {
-    private handlers: TCallback[];
+    private listeners: TCallback[];
     private scope: IScope;
 
     constructor() {
@@ -75,7 +79,7 @@ ${codeWrapper(`
 ...
 set(scope: IScope) {
     this.scope = scope;
-    this.handlers.forEach((handler) => {
+    this.listeners.forEach((handler) => {
         handler(scope);
     });
 }
@@ -86,8 +90,11 @@ get() {
 ...
 `)}
 
-Bear in mind, any time we set new scope, we notify handlers as well.
-Remember in the Class *\`Lesson2.tsx\`* we are calling *\`this.counter.update()\`* and passing a callback method with a *\`setState\`*. This concept is a mega important to understand. It took me some time to crack it.
+Now, since we have *\`subscribe()\`* method, any time, we call *\`set()\`* method all listeners will receive notification callback, with a current scope as an argument.
+
+Also *\`get()\`* method is useful when you need to know the current scope.
+
+In context to React, we will use *\`get()\`* to initialise state in Component. And add the listener in *\`subscribe()\`* method, to setState.
 
 ${codeWrapper(`
 // example from Lesson2.tsx
@@ -101,8 +108,8 @@ this.counter.update((scope: IScope) => {
 So, here we are collecting listeners, with the *\`update()\`* method.
 ${codeWrapper(`
 ...
-update(handler: TCallback) {
-    this.handlers = [...this.handlers, handler];
+update(listener: TCallback) {
+    this.listeners = [...this.listeners, listener];
 }
 
 clear() {
@@ -115,7 +122,7 @@ Since we created a method to *\`update()\`* we need to create a method to remove
 
 Now, we have a class, with getters and setters. However, regards to the counter, there is no counter functionality yet.
 
-Let's add methods for the counter. Each method will update ALL ENTIRE SCOPE!
+Like I explained above, to avoid side effects, we are updating the entire Object, not a part of it.
 
 ${codeWrapper(`
 ...
@@ -152,7 +159,7 @@ export interface IScope {
 type TCallback = (scope: IScope) => void;
 
 class Counter {
-    private handlers: TCallback[] = [];
+    private listeners: TCallback[] = [];
     private scope: IScope;
 
     constructor(initialScope: IScope) {
@@ -178,8 +185,8 @@ class Counter {
 
     set(scope: IScope) {
         this.scope = scope;
-        this.handlers.forEach((handler) => {
-            handler(scope);
+        this.listeners.forEach((listener) => {
+            listener(scope);
         });
     }
 
@@ -187,12 +194,12 @@ class Counter {
         return this.scope;
     }
 
-    update(handler: TCallback) {
-        this.handlers = [...this.handlers, handler];
+    update(listener: TCallback) {
+        this.listeners = [...this.listeners, listener];
     }
 
     clear() {
-        this.handlers = [];
+        this.listeners = [];
     }
 }
 
@@ -230,8 +237,7 @@ constructor(props: IProps) {
 ...
 `)}
 
-We initialise a Counter component with initial State. With *\`this.state = this.counter.get();\`* we bind, initial values from Counter component.
-Now, for *\`inputWidget\`*, we expose counter class methods to buttons.
+In Counter component, we initialise counter observable, with a new set of initial values. Next step is to add, those initial values to state Object in Component. Also, we need to subscribe to observable. This subscription will update state, any time we will make changes inside Observable.
 
 ${codeWrapper(`
 
@@ -276,7 +282,18 @@ render() {
 ...
 `)}
 
-We now have a generic approach to our button labels and methods. That means, now we can use this component outside of the Counter app and change labels and methods for entirely different tasks.
+Now, we have reusable, stateless component, with custom labels, and no more named methods.
+
+### Space to improve
+
+In our tutorial, we are moving forward in small steps. Therefore some parts are missing, and you might notice that.
+
+For example:
+- We are not checking if a new object is the same.
+- The *\`get()\`* method doesn't clone the object but return the same instance.
+- Subscribe should return *\`remove()\`* method.
+
+Our target is to implement a functional approach, and more code will become obsolete in the next lessons
 
 `;
 

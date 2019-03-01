@@ -39,7 +39,7 @@ As per documentation:
 
 ${codeWrapper(`
     ...
-    add() {
+    private add() {
         const {inputValue, totalValue} = this.state;
         const result = inputValue + totalValue;
         this.setState(
@@ -58,7 +58,7 @@ The recommended way by using Function.
 
 ${codeWrapper(`
     ...
-    add() {
+    private add() {
         this.setState((currentState: IState) => {
             const {inputValue, totalValue} = currentState;
             const result = inputValue + totalValue;

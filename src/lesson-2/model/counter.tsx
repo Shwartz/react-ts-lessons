@@ -6,7 +6,7 @@ export interface IScope {
 type TCallback = (scope: IScope) => void;
 
 class Counter {
-    private listener: TCallback[] = [];
+    private listeners: TCallback[] = [];
     private scope: IScope;
 
     constructor(initialScope: IScope) {
@@ -32,7 +32,7 @@ class Counter {
 
     set(scope: IScope) {
         this.scope = scope;
-        this.listener.forEach((handler) => {
+        this.listeners.forEach((handler) => {
             handler(scope);
         });
     }
@@ -41,12 +41,12 @@ class Counter {
         return this.scope;
     }
 
-    update(handler: TCallback) {
-        this.listener = [...this.listener, handler];
+    update(listener: TCallback) {
+        this.listeners = [...this.listeners, listener];
     }
 
     clear() {
-        this.listener = [];
+        this.listeners = [];
     }
 }
 
