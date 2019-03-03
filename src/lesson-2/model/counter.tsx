@@ -32,8 +32,8 @@ class Counter {
 
     set(scope: IScope) {
         this.scope = scope;
-        this.listeners.forEach((handler) => {
-            handler(scope);
+        this.listeners.forEach((listener: TCallback) => {
+            listener(scope);
         });
     }
 
@@ -41,7 +41,7 @@ class Counter {
         return this.scope;
     }
 
-    update(listener: TCallback) {
+    subscribe(listener: TCallback) {
         this.listeners = [...this.listeners, listener];
     }
 
