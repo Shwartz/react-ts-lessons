@@ -39,13 +39,13 @@ As per documentation:
 
 ${codeWrapper(`
     ...
-    add() {
-        const {inputValue, updateValue} = this.state;
-        const result = inputValue + updateValue;
+    private add() {
+        const {inputValue, totalValue} = this.state;
+        const result = inputValue + totalValue;
         this.setState(
             {
                 inputValue,
-                updateValue: result
+                totalValue: result
             }
         );
     }
@@ -58,11 +58,11 @@ The recommended way by using Function.
 
 ${codeWrapper(`
     ...
-    add() {
+    private add() {
         this.setState((currentState: IState) => {
-            const {inputValue, updateValue} = currentState;
-            const result = inputValue + updateValue;
-            return {inputValue, updateValue: result};
+            const {inputValue, totalValue} = currentState;
+            const result = inputValue + totalValue;
+            return {inputValue, totalValue: result};
         });
     }
     ...
@@ -77,7 +77,7 @@ There is nothing wrong to use *\`setState\`* with a passing Object. Use this app
 
 ${codeWrapper(`
     ...
-    updateValue(value: number) {
+    totalValue(value: number) {
         this.setState({
             inputValue: value
         });
@@ -95,7 +95,7 @@ The recommended approach to defining all the State values at the top of the rend
 ${codeWrapper(`
     ...
     render() {
-        const {inputValue, updateValue} = this.state;
+        const {inputValue, totalValue} = this.state;
     ...
 `)}
 
@@ -122,7 +122,7 @@ ${codeWrapper(`
     <InputWidget
     ...
         change={(val: number) => {
-            return this.updateValue(val)
+            return this.totalValue(val)
             }
         }
     />

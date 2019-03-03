@@ -10,7 +10,7 @@ interface IProps {
 
 const initialState: IScope = {
     inputValue: 5,
-    updateValue: 0
+    totalValue: 0
 };
 
 class Lesson2 extends Component<IProps> {
@@ -27,7 +27,7 @@ class Lesson2 extends Component<IProps> {
     }
 
     render() {
-        const {inputValue, updateValue} = this.state;
+        const {inputValue, totalValue} = this.state;
 
         return (
             <div className={styles.Lesson2}>
@@ -36,7 +36,7 @@ class Lesson2 extends Component<IProps> {
                 <h3>Counter Widget Demo</h3>
 
                 <div className={styles.codeDemo}>
-                    <p className={styles.output}>Total: {updateValue}</p>
+                    <p className={styles.output}>Total: {totalValue}</p>
                     <InputWidget
                         leftButtonLabel={`Remove`}
                         leftButtonHandler={

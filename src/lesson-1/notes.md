@@ -18,9 +18,9 @@ Many developers, when want to change values inside state, depending on current s
 ```typescript
     ...
     add() {
-        const {inputValue, updateValue} = this.state;
-        const result = inputValue + updateValue;
-        this.setState({inputValue, updateValue: result});
+        const {inputValue, totalValue} = this.state;
+        const result = inputValue + totalValue;
+        this.setState({inputValue, totalValue: result});
     }
     ...
 
@@ -36,9 +36,9 @@ More safe example is this.
     ...
     add() {
         this.setState((currentState: IState) => {
-            const {inputValue, updateValue} = currentState;
-            const result = inputValue + updateValue;
-            return {inputValue, updateValue: result};
+            const {inputValue, totalValue} = currentState;
+            const result = inputValue + totalValue;
+            return {inputValue, totalValue: result};
         });
     }
     ...    
@@ -52,7 +52,7 @@ But, in places, where you are not depending on current state, perfectly fine to 
 
 ```typescript
     ...
-    updateValue(value: number) {
+    totalValue(value: number) {
         this.setState({
             inputValue: value
         });
@@ -72,7 +72,7 @@ Like this.
 ```typescript
     ...
     render() {
-        const {inputValue, updateValue} = this.state;
+        const {inputValue, totalValue} = this.state;
     ...
 
 ```
@@ -100,7 +100,7 @@ If callback return arguments, I recommend for visibility, show returning type.
 ```typescript
     <InputWidget
     ...
-        change={(val: number) => this.updateValue(val)}
+        change={(val: number) => this.totalValue(val)}
     />
 
 ```
