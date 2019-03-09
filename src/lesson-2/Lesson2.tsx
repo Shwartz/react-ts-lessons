@@ -14,13 +14,13 @@ const initialState: IScope = {
 };
 
 class Lesson2 extends Component<IProps> {
+    private counter = counter(initialState);
     state: IScope;
-    counter = counter(initialState);
 
     constructor(props: IProps) {
         super(props);
         this.state = this.counter.get();
-        this.counter.update((scope: IScope) => {
+        this.counter.subscribe((scope: IScope) => {
             this.setState(scope);
         });
     }
@@ -58,7 +58,7 @@ class Lesson2 extends Component<IProps> {
                     />
                 </div>
 
-                <Description />
+                <Description/>
             </div>
         );
     }
