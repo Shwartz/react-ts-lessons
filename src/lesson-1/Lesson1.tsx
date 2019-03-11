@@ -49,7 +49,7 @@ class Lesson1 extends Component {
         const {inputValue, totalValue} = this.state;
         return (
             <div className={css.lesson1}>
-                <h1>Lesson 1 - Simple counter</h1>
+                <h1>Lesson 1 - Simple Counter</h1>
 
                 <h3>Counter Widget demo</h3>
 
