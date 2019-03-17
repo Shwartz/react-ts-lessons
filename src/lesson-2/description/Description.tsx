@@ -23,15 +23,29 @@ Let's move all functionality outside to the Counter component.
 
 A current example is just a small use case. However, imagine an enterprise level app in an agile dev environment where functionality changes are a day to day requirement.
 
-Let's create Counter Object where we can collect *\`inputValue\`* and *\`totalValue\`*.
-
 ${codeWrapper(`
 export interface IScope {
     inputValue: number;
     totalValue: number;
 }
+
+type TCallback = (scope: IScope) => void;
     ...
 `)}
+
+Before we start, let's add a definition for counter Object and Callback. Those two definitions will help us later, for tracking types.
+
+Interface for counter Object contains inputValue, and totalValue. Both are integers, in typescript integer type is called \`number\`.
+
+Type TCallback, will take as argument our defined counter object, and won't return anything.
+
+As you notice, we are using *\`interface\`* and *\`type\`*. There is a subtle difference between both.
+
+> *\`Interface\`* -  when you need to implement something. Should be Class, or just Object. Will help to understand the structure, and implementation rules.
+
+> *\`Type\`* - Just rules, mostly when the same definition is used more than one time in the code, but you do not have to implement anything.
+
+More on the subject [Advanced Types](https://www.typescriptlang.org/docs/handbook/advanced-types.html)
 
 To extending functionality, and decouple from DOM, we need to implement a separate class with Observable pattern.
 
@@ -129,6 +143,15 @@ Now, we have a class, with getters and setters. However, regards to the counter,
 
 Like I explained above, to avoid side effects, we are updating the entire Object, not a part of it.
 
+To avoid side effects, we are updating the entire Object, not a part of it.
+
+> Side effect - Object by nature is *Mutable*, and when anyone anywhere will make changes in the same Object, any reference to this Object, will also have changes. This means, your code is unpredictable, you don’t know, what’s actual value in Object at a particular state in the application. To avoid those problems, everything in code is “input and output”. Output always return a new instance.
+
+> Regards to memory, and performance. Javascript garbage collector will destroy, all unused objects. Javascript is a speedy engine, still very questionable performance between creating a new object vs modifying an object. The current approach has apparent advantages versus controversial performance issues. I will copy the same article here: [React, Inline Functions, and Performance](https://cdb.reacttraining.com/react-inline-functions-and-performance-bdff784f5578)
+
+> Very big object manipulation is out of this scope. In short, large datasets usually are managed by chunks, and there are more complex techniques involved.
+
+
 ${codeWrapper(`
 ...
 add() {
@@ -151,16 +174,6 @@ inputChange(value: number) {
 `)}
 
 > There is a place for improvements but let's leave that for the Lesson3
-
-Below we use *\`type TCallback = (scope: IScope) => void;\`*.
-
-In Typescript *\`type\`* is similar to *\`interface\`* however there are subtle differences.
-
-> "One difference is that interfaces create a new name that is used everywhere. Type aliases don’t create a new name — for instance, error messages won’t use the alias name. In the code below, hovering over interfaced in an editor will show that it returns an Interface, but will show that aliased returns object literal type."
-
-> "A second more important difference is that type aliases cannot be extended or implemented from (nor can they extend/implement other types). Because an ideal property of software is being open to extension, you should always use an interface over a type alias if possible."
-
-More on the subject [Advanced Types](https://www.typescriptlang.org/docs/handbook/advanced-types.html)
 
 Here is a full class.
 
