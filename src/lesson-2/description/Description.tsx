@@ -75,9 +75,10 @@ class Counter {
 }    ...
 `)}
 
-Scope and handlers initialised for handling class state.
+Scope and listeners initialised for privately handling class state.
 
 In a *\`constructor\`*, we set *\`initialScope\`* which is mandatory.
+*\`initialScope\`* is mandatory, because we need initial values, to display counter first time on screen.
 
 ${codeWrapper(`
 ...
@@ -132,16 +133,12 @@ update(listener: TCallback) {
 }
 
 clear() {
-    this.handlers = [];
+    this.listeners = [];
 }
 ...
 `)}
 
-Since we created a method to *\`subscribe()\`* we need to create a method to remove as well. Therefore there is *\`clear()\`* to remove all the handlers before we are removing a component.
-
-Now, we have a class, with getters and setters. However, regards to the counter, there is no counter functionality yet.
-
-Like I explained above, to avoid side effects, we are updating the entire Object, not a part of it.
+Since we have a method  *\`subscribe()\`* to add listeners, we need to create a method to remove them as well. Therefore there is *\`clear()\`* method to remove all the listeners. We can call it, before we are removing a component.
 
 To avoid side effects, we are updating the entire Object, not a part of it.
 
@@ -150,6 +147,8 @@ To avoid side effects, we are updating the entire Object, not a part of it.
 > Regards to memory, and performance. Javascript garbage collector will destroy, all unused objects. Javascript is a speedy engine, still very questionable performance between creating a new object vs modifying an object. The current approach has apparent advantages versus controversial performance issues. I will copy the same article here: [React, Inline Functions, and Performance](https://cdb.reacttraining.com/react-inline-functions-and-performance-bdff784f5578)
 
 > Very big object manipulation is out of this scope. In short, large datasets usually are managed by chunks, and there are more complex techniques involved.
+
+Now, we have a class, with getters and setters. However, regards to the counter, there is no counter functionality yet.
 
 
 ${codeWrapper(`
@@ -241,7 +240,7 @@ In case you wonder about this line
 Initialising is done to avoid using *\`new\`* every time we are using a Counter component, kind of shortcut.
 
 
-In Lesson2 class, we don't need to add any more methods. We connect (don't want to use the word *\`hook\`* :)) together *\`setState\`* and *\`counter.update\`*.
+In Lesson2 class, we don't need to add any methods in \`Component\`. We will connect (don't want to use the word *\`hook\`* :)) \`Counter Class\` and \`Component\` together by joining *\`counter.subscribe\`* with  *\`this.setState\`*.
 
 In Counter component, we initialise counter observable, with a new set of initial values. Next step is to add, those initial values to state Object in Component. Also, we need to subscribe to observable. This subscription will update state, any time we will make changes inside Observable.
 
@@ -259,16 +258,16 @@ counter = counter(initialState);
 constructor(props: IProps) {
     super(props);
     this.state = this.counter.get();
-    this.counter.update((scope: IScope) => {
+    this.counter.subscribe((scope: IScope) => {
         this.setState(scope);
     });
 }
 ...
 `)}
 
-In Lesson 1 our *\`inputWidget\`* had named methods which is ok for that example but what if we want to use them for something else? Let's abstract them! For that we change method name from *\`remove()\`* to *\`leftButtonHandler()\`* and hard-coded button label *\`Remove\`* to *\`{leftButtonLabel}\`*
+In Lesson 1 our *\`inputWidget\`* had named methods which is ok if component are not used anywhere, but what if we want to use them for something else? Let's abstract them! For that we change method name from *\`remove()\`* to *\`leftButtonHandler()\`* and hard-coded button label *\`Remove\`* to *\`{leftButtonLabel}\`*
 
-That way we can pass any name for a label and with any method. That way we can make this component reusable somewhere else in the app with entirely different methods and labels.
+That way we can pass any name for a label and with any method, and we can make this component reusable somewhere else in the app with entirely different methods and labels.
 
 > Whenever you create a new component think if you can make it reusable.
 
@@ -323,11 +322,11 @@ Now, we have reusable, stateless component, with custom labels, and no more name
 In our tutorial, we are moving forward in small steps. Therefore some parts are missing, and you might notice that.
 
 For example:
-- We are not checking if a new object is the same.
-- The *\`get()\`* method doesn't clone the object but return the same instance.
-- Subscribe should return *\`remove()\`* method.
+- Counter class contains not necessary methods.
+- The *\`get()\`* method return same instance, should be \`Object.freeze\`.
+- Subscribe should return *\`remove()\`* method, in case you want to unsubscribe from Observable.
 
-Our target is to implement a functional approach, and more code will become obsolete in the next lessons
+Our target is to implement a functional approach, and some parts of code will become obsolete in the next few lessons.
 
 `;
 
