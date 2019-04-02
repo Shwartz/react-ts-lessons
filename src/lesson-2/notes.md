@@ -227,7 +227,7 @@ const initialState: IScope = {
     totalValue: 0
 };
 
-export class Lesson2 extends Component<IProps> {
+export class Lesson3 extends Component<IProps> {
     state: IScope;
     counter = counter(initialState);
 
@@ -252,7 +252,7 @@ Now, for inputWidget, we expose counter class methods to buttons.
         const {inputValue, totalValue} = this.state;
 
         return (
-            <div className={styles.Lesson2}>
+            <div className={styles.Lesson3}>
                 <h1>Lesson 2</h1>
 
                 <h3>Demo</h3>

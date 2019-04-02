@@ -8,6 +8,7 @@ import './common/prism.css';
 import Home from './Home';
 import Lesson1 from './lesson-1/Lesson1';
 import Lesson2 from './lesson-2/Lesson2';
+import Lesson3 from './lesson-3/Lesson3';
 
 class App extends Component {
     state = {
@@ -53,6 +54,15 @@ class App extends Component {
                                         Lesson 2 - Simple counter
                                     </ListItem>
                                 </Link>
+                                <Link to="/lesson-3">
+                                    <ListItem
+                                        button={true}
+                                        selected={this.state.selectedIndex === 4}
+                                        onClick={(ev) => this.handleListItemClick(ev, 4)}
+                                    >
+                                        Lesson 3 - Simple counter
+                                    </ListItem>
+                                </Link>
                             </List>
                         </Grid>
                         <Grid item={true} sm={8} xs={12}>
@@ -61,6 +71,7 @@ class App extends Component {
                                     <Route exact={true} path="/" component={Home}/>
                                     <Route path="/lesson-1" component={Lesson1}/>
                                     <Route path="/lesson-2" component={Lesson2}/>
+                                    <Route path="/lesson-3" component={Lesson3}/>
                                     <Route component={NoMatch}/>
                                 </Switch>
                             </section>
