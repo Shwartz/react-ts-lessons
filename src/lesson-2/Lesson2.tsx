@@ -21,7 +21,7 @@ const Lesson2 = () => {
         <div className={styles.Lesson2}>
             <h1>Lesson 2 - Simple Counter</h1>
 
-            <h3>Counter Widget Demo {inputValue}</h3>
+            <h3>Counter Widget Demo</h3>
 
             <div className={styles.codeDemo}>
                 <p className={styles.output}>Total: {totalValue}</p>
