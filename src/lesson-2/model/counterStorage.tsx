@@ -5,7 +5,7 @@ export interface IScope {
 
 type TCallback = (scope: IScope) => void;
 
-class Counter {
+export class Counter {
     private listeners: TCallback[] = [];
     private scope: IScope;
 
@@ -25,9 +25,9 @@ class Counter {
         this.set({inputValue, totalValue: result});
     }
 
-    inputChange(value: number) {
+    inputChange(inputValue: number) {
         const {totalValue} = this.scope;
-        this.set({inputValue: value, totalValue});
+        this.set({inputValue, totalValue});
     }
 
     set(scope: IScope) {
@@ -41,8 +41,19 @@ class Counter {
         return this.scope;
     }
 
+    once(listener: TCallback) {
+        const {remove} = this.subscribe((_) => {
+            listener(_);
+            remove();
+        });
+    }
+
     subscribe(listener: TCallback) {
         this.listeners = [...this.listeners, listener];
+        const remove = () => this.listeners.filter((_) => _ !== listener);
+        return {
+            remove
+        };
     }
 
     clear() {
@@ -50,4 +61,4 @@ class Counter {
     }
 }
 
-export const counter = (initialScope: IScope) => new Counter(initialScope);
+export const counterStorage = (initialScope: IScope) => new Counter(initialScope);
