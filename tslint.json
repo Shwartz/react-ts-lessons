@@ -17,6 +17,7 @@
             "jsx-double",
             "avoid-escape"
         ],
+        "no-shadowed-variable": false,
         "no-implicit-dependencies": [
             true,
             "dev"
